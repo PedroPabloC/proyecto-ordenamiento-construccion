@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package test;
+import Controller.ControllerMainView;
 import java.util.ArrayList;
 import model.*;
 import vista.*;
@@ -43,7 +44,7 @@ public class main {
         ArbolAlfanum bAlf3 = new ArbolAlfanum();
         ArbolAlfanum bAlf4 = new ArbolAlfanum();
         
-        matriz = reader.lector("C:\\Users\\Albert\\Documents\\NetBeansProjects\\ProyectoFinal\\Egresados.csv");
+        matriz = reader.lector("D:\\Documentos\\NetBeansProjects\\proyecto-ordenamiento-construccion\\ProyectoFinal\\Egresados.csv");
         
         newMat = reader.getMatriz();
         index = reader.getIndex(matriz);
@@ -58,7 +59,8 @@ public class main {
             indexNom.add(index[i]);
         }
         
-        view.setRows(newMat,indexNom);
+        ControllerMainView controller=new ControllerMainView(view);
+        controller.setRows(newMat,indexNom);
         
         for(int i=0; i<prom.length; i++){
             bNum.insertar(prom[i], index[i]);
@@ -92,7 +94,7 @@ public class main {
         
         
         
-        view.setData(newMat, indexNom, indexProf, indexProm, bNum, bAlf, bAlf2, bAlf3, bAlf4);
+        controller.setData(newMat, indexNom, indexProf, indexProm, bNum, bAlf, bAlf2, bAlf3, bAlf4);
         
     }
     
