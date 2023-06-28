@@ -1,0 +1,296 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<Form version="1.5" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
+  <NonVisualComponents>
+    <Component class="javax.swing.ButtonGroup" name="buttonGroup1">
+    </Component>
+  </NonVisualComponents>
+  <Properties>
+    <Property name="defaultCloseOperation" type="int" value="3"/>
+  </Properties>
+  <SyntheticProperties>
+    <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
+    <SyntheticProperty name="generateCenter" type="boolean" value="false"/>
+  </SyntheticProperties>
+  <AuxValues>
+    <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
+    <AuxValue name="FormSettings_autoSetComponentName" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_generateFQN" type="java.lang.Boolean" value="true"/>
+    <AuxValue name="FormSettings_generateMnemonicsCode" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_i18nAutoMode" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_layoutCodeTarget" type="java.lang.Integer" value="1"/>
+    <AuxValue name="FormSettings_listenerGenerationStyle" type="java.lang.Integer" value="0"/>
+    <AuxValue name="FormSettings_variablesLocal" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_variablesModifier" type="java.lang.Integer" value="2"/>
+  </AuxValues>
+
+  <Layout>
+    <DimensionLayout dim="0">
+      <Group type="103" groupAlignment="0" attributes="0">
+          <Component id="jPanel1" alignment="1" max="32767" attributes="0"/>
+      </Group>
+    </DimensionLayout>
+    <DimensionLayout dim="1">
+      <Group type="103" groupAlignment="0" attributes="0">
+          <Component id="jPanel1" alignment="0" max="32767" attributes="0"/>
+      </Group>
+    </DimensionLayout>
+  </Layout>
+  <SubComponents>
+    <Container class="javax.swing.JPanel" name="jPanel1">
+      <Properties>
+        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="ff" green="ff" red="66" type="rgb"/>
+        </Property>
+        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="ff" green="ff" red="66" type="rgb"/>
+        </Property>
+      </Properties>
+
+      <Layout>
+        <DimensionLayout dim="0">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <Group type="102" alignment="0" attributes="0">
+                  <EmptySpace min="-2" pref="67" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="jScrollPane1" min="-2" pref="674" max="-2" attributes="0"/>
+                      <Group type="102" alignment="0" attributes="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="LabelProfesion" min="-2" max="-2" attributes="0"/>
+                              <Component id="LabelPromedio" min="-2" max="-2" attributes="0"/>
+                              <Component id="LabelNombre" alignment="0" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" attributes="0">
+                                  <Component id="SelectorProfesionInicial" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="212" max="-2" attributes="0"/>
+                                  <Component id="BotonBuscar" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" attributes="0">
+                                  <Component id="CampoPromedioInicial" min="-2" pref="41" max="-2" attributes="0"/>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <Component id="SelectorComparacionPromedio" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
+                                  <Component id="CampoPromedioFinal" min="-2" pref="41" max="-2" attributes="0"/>
+                              </Group>
+                              <Component id="CampoDeTextoNombre" alignment="0" min="-2" pref="252" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                  </Group>
+                  <EmptySpace pref="72" max="32767" attributes="0"/>
+              </Group>
+          </Group>
+        </DimensionLayout>
+        <DimensionLayout dim="1">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <Group type="102" alignment="0" attributes="0">
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="jScrollPane1" min="-2" pref="327" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="LabelNombre" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="CampoDeTextoNombre" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="LabelProfesion" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="SelectorProfesionInicial" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="BotonBuscar" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="CampoPromedioInicial" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="LabelPromedio" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="CampoPromedioFinal" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="SelectorComparacionPromedio" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace pref="38" max="32767" attributes="0"/>
+              </Group>
+          </Group>
+        </DimensionLayout>
+      </Layout>
+      <SubComponents>
+        <Container class="javax.swing.JScrollPane" name="jScrollPane1">
+          <AuxValues>
+            <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
+          </AuxValues>
+
+          <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+          <SubComponents>
+            <Component class="javax.swing.JTable" name="jTable1">
+              <Properties>
+                <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
+                  <Table columnCount="3" rowCount="19">
+                    <Column editable="true" title="Nombre" type="java.lang.Object">
+                      <Data value="Angel Gonzalez"/>
+                      <Data value="Anna Matos"/>
+                      <Data value="Armando Santos"/>
+                      <Data value="Axel Juarez"/>
+                      <Data value="Bartolomeo Santos"/>
+                      <Data value="Beatriz Cruz"/>
+                      <Data value="Carmen Rodriguez"/>
+                      <Data value="Daniel Sansores"/>
+                      <Data value="Damian Alcazar"/>
+                      <Data value="Diego Cruz"/>
+                      <Data value="Maria Conrado"/>
+                      <Data value="Natalia Lugo"/>
+                      <Data value="Omar Gonzales"/>
+                      <Data value="Osvaldo Ortega"/>
+                      <Data value="Patricia Romo"/>
+                      <Data value="Pedro Guzman"/>
+                      <Data value="Uriel Matos"/>
+                      <Data value="Vanessa Dorantes"/>
+                      <Data value="Waldo Lopez"/>
+                    </Column>
+                    <Column editable="true" title="Profesion" type="java.lang.Object">
+                      <Data value="Quimico"/>
+                      <Data value="Arquitecto"/>
+                      <Data value="Veterinario"/>
+                      <Data value="Ingeniero Civil"/>
+                      <Data value="Arquitecto"/>
+                      <Data value="Medico Cirujano"/>
+                      <Data value="Ingeniero Civil"/>
+                      <Data value="Quimico"/>
+                      <Data value="Quimico"/>
+                      <Data value="Veterinario"/>
+                      <Data value="Arquitecto"/>
+                      <Data value="Veterinario"/>
+                      <Data value="Medico Cirujano"/>
+                      <Data value="Ingeniero Civil"/>
+                      <Data value="Ingeniero Civil"/>
+                      <Data value="Veterinario"/>
+                      <Data value="Arquitecto"/>
+                      <Data value="Quimico"/>
+                      <Data value="Medico Cirujano"/>
+                    </Column>
+                    <Column editable="true" title="Promedio" type="java.lang.Object">
+                      <Data value="79"/>
+                      <Data value="80"/>
+                      <Data value="99"/>
+                      <Data value="67"/>
+                      <Data value="79"/>
+                      <Data value="94"/>
+                      <Data value="76"/>
+                      <Data value="85"/>
+                      <Data value="71"/>
+                      <Data value="90"/>
+                      <Data value="83"/>
+                      <Data value="89"/>
+                      <Data value="73"/>
+                      <Data value="65"/>
+                      <Data value="68"/>
+                      <Data value="77"/>
+                      <Data value="82"/>
+                      <Data value="95"/>
+                      <Data value="null"/>
+                    </Column>
+                  </Table>
+                </Property>
+                <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
+                  <TableColumnModel selectionModel="0">
+                    <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                      <Title/>
+                      <Editor/>
+                      <Renderer/>
+                    </Column>
+                    <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                      <Title/>
+                      <Editor/>
+                      <Renderer/>
+                    </Column>
+                    <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                      <Title/>
+                      <Editor/>
+                      <Renderer/>
+                    </Column>
+                  </TableColumnModel>
+                </Property>
+                <Property name="tableHeader" type="javax.swing.table.JTableHeader" editor="org.netbeans.modules.form.editors2.JTableHeaderEditor">
+                  <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
+                </Property>
+              </Properties>
+            </Component>
+          </SubComponents>
+        </Container>
+        <Component class="javax.swing.JLabel" name="LabelNombre">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Tahoma" size="14" style="1"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="Nombre:"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="CampoPromedioInicial">
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="CampoPromedioInicialActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JLabel" name="LabelProfesion">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Tahoma" size="14" style="1"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="Profesion:"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JComboBox" name="SelectorProfesionInicial">
+          <Properties>
+            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+              <StringArray count="6">
+                <StringItem index="0" value="Seleccionar"/>
+                <StringItem index="1" value="Arquitecto"/>
+                <StringItem index="2" value="Ingeniero Civil"/>
+                <StringItem index="3" value="Medico Cirujano"/>
+                <StringItem index="4" value="Quimico"/>
+                <StringItem index="5" value="Veterinario"/>
+              </StringArray>
+            </Property>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="SelectorProfesionInicialActionPerformed"/>
+          </Events>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+          </AuxValues>
+        </Component>
+        <Component class="javax.swing.JLabel" name="LabelPromedio">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Tahoma" size="14" style="1"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="Promedio:"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="CampoPromedioFinal">
+        </Component>
+        <Component class="javax.swing.JTextField" name="CampoDeTextoNombre">
+        </Component>
+        <Component class="javax.swing.JButton" name="BotonBuscar">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Buscar"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JComboBox" name="SelectorComparacionPromedio">
+          <Properties>
+            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+              <StringArray count="5">
+                <StringItem index="0" value="Seleccionar"/>
+                <StringItem index="1" value="&gt;=X"/>
+                <StringItem index="2" value="X=&lt;"/>
+                <StringItem index="3" value="=X"/>
+                <StringItem index="4" value="&gt;= X=&lt;"/>
+              </StringArray>
+            </Property>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="SelectorComparacionPromedioActionPerformed"/>
+          </Events>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+          </AuxValues>
+        </Component>
+      </SubComponents>
+    </Container>
+  </SubComponents>
+</Form>
