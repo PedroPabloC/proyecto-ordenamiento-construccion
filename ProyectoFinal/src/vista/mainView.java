@@ -6,7 +6,10 @@
 package vista;
 
 import java.util.ArrayList;
+import javax.swing.JButton;
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
+import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 import model.*;
 
@@ -15,21 +18,9 @@ import model.*;
  * @author Albert
  */
 public class mainView extends javax.swing.JFrame {
-    private String[][] matriz = new String[626][3];    
-    DefaultTableModel mT = new DefaultTableModel();
-    private ArrayList<Integer> a1 = new ArrayList<Integer>();
-    private ArrayList<Integer> a2 = new ArrayList<Integer>();
-    private ArrayList<Integer> a3 = new ArrayList<Integer>();
-    private ArbolNum treeNum = new ArbolNum();
-    private ArbolAlfanum treeAlf1 = new ArbolAlfanum();
-    private ArbolAlfanum treeAlf2 = new ArbolAlfanum();
-    private ArbolAlfanum treeAlf3 = new ArbolAlfanum();
-    private ArbolAlfanum treeAlf4 = new ArbolAlfanum();
-    
-    
+   
     public mainView() {
         initComponents();
-        setModel();
         filProm.setText("Filtrar por Promedio");
         filNomb.setText("Filtrar por Nombre");
         filtProf.setText("Filtrar por Profesión");
@@ -53,30 +44,6 @@ public class mainView extends javax.swing.JFrame {
         searchPromProf.setText("Buscar por Profesion y Promedio");
     }
     
-    public void setModel(){
-        String[] header1 ={"Nombre", "Profesion", "Promedio"};
-        mT.setColumnIdentifiers(header1);
-        lista.setModel(mT);
-    }
-    
-    public void setRows(String[][] m, ArrayList<Integer> ind){
-        mT.setRowCount(ind.size());
-        mT.setColumnCount(3);
-        
-        for(int i=0; i<ind.size(); i++){
-            for(int j=0; j<3; j++){
-                mT.setValueAt(m[ind.get(i)][j], i, j);
-            }
-        }
-    }
-    
-    public void clearTable(){
-        setModel();
-            int filas=mT.getRowCount();
-            for (int i = 0;filas>i; i++) {
-                mT.removeRow(0);
-            }
-    }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -120,53 +87,18 @@ public class mainView extends javax.swing.JFrame {
         jScrollPane1.setViewportView(lista);
 
         filProm.setText("jButton1");
-        filProm.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                filPromActionPerformed(evt);
-            }
-        });
 
         filNomb.setText("jButton1");
-        filNomb.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                filNombActionPerformed(evt);
-            }
-        });
 
         filtProf.setText("jButton1");
-        filtProf.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                filtProfActionPerformed(evt);
-            }
-        });
 
         searchProm.setText("jTextField1");
-        searchProm.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                searchPromActionPerformed(evt);
-            }
-        });
 
         searchByProm.setText("jButton1");
-        searchByProm.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                searchByPromActionPerformed(evt);
-            }
-        });
 
         searchByProf.setText("jButton1");
-        searchByProf.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                searchByProfActionPerformed(evt);
-            }
-        });
 
         searchByN.setText("jButton1");
-        searchByN.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                searchByNActionPerformed(evt);
-            }
-        });
 
         searchProf.setText("jTextField1");
 
@@ -179,39 +111,14 @@ public class mainView extends javax.swing.JFrame {
         label3.setText("jLabel3");
 
         searchNaPr.setText("jButton1");
-        searchNaPr.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                searchNaPrActionPerformed(evt);
-            }
-        });
 
         searchNaProm.setText("jButton1");
-        searchNaProm.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                searchNaPromActionPerformed(evt);
-            }
-        });
 
         searchPromProf.setText("jButton1");
-        searchPromProf.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                searchPromProfActionPerformed(evt);
-            }
-        });
 
         advSearch.setText("jButton1");
-        advSearch.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                advSearchActionPerformed(evt);
-            }
-        });
 
         simpleSearch.setText("jButton2");
-        simpleSearch.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                simpleSearchActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -296,9 +203,9 @@ public class mainView extends javax.swing.JFrame {
                                 .addComponent(searchByProm)
                                 .addComponent(searchPromProf)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(advSearch)
-                            .addComponent(simpleSearch))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(simpleSearch)
+                            .addComponent(advSearch))
                         .addContainerGap())))
         );
 
@@ -315,220 +222,7 @@ public class mainView extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void filPromActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_filPromActionPerformed
-
-    setRows(matriz, a3);
         
-    }//GEN-LAST:event_filPromActionPerformed
-
-    private void filNombActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_filNombActionPerformed
-    
-    setRows(matriz, a1);
-    
-    }//GEN-LAST:event_filNombActionPerformed
-
-    private void filtProfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_filtProfActionPerformed
-    
-    setRows(matriz, a2);    
-    
-    }//GEN-LAST:event_filtProfActionPerformed
-
-    private void searchByPromActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchByPromActionPerformed
-        ArrayList<Integer> a4 = new ArrayList<Integer>();
-        String prom = getProm();
-        if(prom.compareTo("")!=0){
-                int aux = Integer.parseInt(getProm());
-                if(aux<60 || aux>100){
-                    JOptionPane.showMessageDialog(null, "NO EXISTEN REGISTROS CON ESE PROMEDIO");
-                }else if(treeNum.existe(aux)){
-                    JOptionPane.showMessageDialog(null, "NO EXISTEN REGISTROS CON ESE PROMEDIO");
-                }else{
-                    a4 = searchProm(treeNum, aux);
-                    setRows(matriz, a4);
-                }
-            }else{
-            JOptionPane.showMessageDialog(null, "LOS CAMPOS ESTAN VACIOS AGREGUE UN DATO PARA SU BUSQUEDA");
-        }
-        searchProm.setText("");
-        a4.clear();
-    }//GEN-LAST:event_searchByPromActionPerformed
-
-    private void searchPromActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchPromActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_searchPromActionPerformed
-
-    private void searchByNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchByNActionPerformed
-      ArrayList<Integer> a4 = new ArrayList<Integer>();
-        String nom = getNom();
-        if(nom.compareTo("")!=0){
-                if(nom.length()<=10){
-                    JOptionPane.showMessageDialog(null, "NO EXISTEN REGISTROS CON ESOS DATOS, PORFAVOR REVISE LOS DATOS O ESCRIBA DE NUEVO EL NOMBRE");
-                }else{
-                    a4 = searchNom(treeAlf1, nom);
-                    setRows(matriz, a4);
-                    if(a4.size()==0){
-                            JOptionPane.showMessageDialog(null, "NO ESXTTEN COINCIDENCIAS DE REGISTRO, INTENTELOS NUEVAMENTE");
-                        }
-                }
-            }else{
-            JOptionPane.showMessageDialog(null, "LOS CAMPOS ESTAN VACIOS AGREGUE UN DATO PARA SU BUSQUEDA");
-        }
-        searchNom.setText("");
-        a4.clear();
-    }//GEN-LAST:event_searchByNActionPerformed
-
-    private void searchByProfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchByProfActionPerformed
-        ArrayList<Integer> a4 = new ArrayList<Integer>();
-        String prof = getProf();
-        if(prof.compareTo("")!=0){
-                if(prof.length()<=5){
-                    JOptionPane.showMessageDialog(null, "LA PROFESION BUSCADA NO SE ENCUENTRA, PORFAVOR INTENTE OTRA O ESCRIBA NUEVAMENTE SU BUSQUEDA");
-                }else{
-                    a4 = searchProf(treeAlf1, prof);
-                    setRows(matriz, a4);
-                    if(a4.size()==0){
-                            JOptionPane.showMessageDialog(null, "NO ESXTTEN COINCIDENCIAS DE REGISTRO, INTENTELOS NUEVAMENTE");
-                        }
-                }
-            }else{
-            JOptionPane.showMessageDialog(null, "LOS CAMPOS ESTAN VACIOS AGREGUE UN DATO PARA SU BUSQUEDA");
-        }
-        searchProf.setText("");
-        a4.clear();
-    }//GEN-LAST:event_searchByProfActionPerformed
-        
-    private void searchNaPromActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchNaPromActionPerformed
-        ArrayList<Integer> a4 = new ArrayList<Integer>();
-        String prof = getProf();
-        String prom = getProm();
-        String nom = getNom();
-        if(prof.compareTo("")!=0){
-            JOptionPane.showMessageDialog(null, "ESTA BUSQUEDA SOLO PERMITE DATOS DE NOMBRE Y PROMEDIO, INGRESE OTROS DATOS");
-        }else if(nom.compareTo("")!=0 || prom.compareTo("")!=0){
-                if(nom.length()<=10){
-                    JOptionPane.showMessageDialog(null, "EL NOMBRE INTRODUCIDO ES INCORRECTO, POR FAVOR INGRESELO DE NUEVO");
-                }else{
-                    int aux = Integer.parseInt(getProm());
-                    if(aux<100){
-                        String aux2 = nom + "0" + prom;
-                        a4 = searchProf(treeAlf3, aux2);
-                        if(a4.size()==0){
-                            JOptionPane.showMessageDialog(null, "NO ESXTTEN COINCIDENCIAS DE REGISTRO, INTENTELOS NUEVAMENTE");
-                        }
-                        setRows(matriz, a4);
-                    }else if(aux==100){
-                        String aux2 = nom + prom;
-                        a4 = searchProf(treeAlf3, aux2);
-                        setRows(matriz, a4);
-                        if(a4.size()==0){
-                            JOptionPane.showMessageDialog(null, "NO ESXTTEN COINCIDENCIAS DE REGISTRO, INTENTELOS NUEVAMENTE");
-                        }
-                    }else if(aux<60 || aux>100){
-                    JOptionPane.showMessageDialog(null, "NO EXISTE REGISTRO CON ESE PROMEDIO INTENTELO DE NUEVO");
-                }
-                }
-        }else{
-            JOptionPane.showMessageDialog(null, "LOS CAMPOS ESTAN VACIOS AGREGUE ALGUN DATO PARA BUSQUEDA");
-        }
-        searchProf.setText("");
-        searchProm.setText("");
-        searchNom.setText("");
-        a4.clear();
-    }//GEN-LAST:event_searchNaPromActionPerformed
-
-    private void searchNaPrActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchNaPrActionPerformed
-        ArrayList<Integer> a4 = new ArrayList<Integer>();
-        String prof = getProf();
-        String prom = getProm();
-        String nom = getNom();
-        if(prom.compareTo("")!=0){
-            JOptionPane.showMessageDialog(null, "ESTA BUSQUEDA SOLO PERMITE DATOS DE NOMBRE Y PROFESION, INGRESE OTROS DATOS");
-        }else if(nom.compareTo("")!=0 || prof.compareTo("")!=0){
-                if(nom.length()<=10){
-                    JOptionPane.showMessageDialog(null, "EL NOMBRE INTRODUCIDO ES INCORRECTO, POR FAVOR INGRESELO DE NUEVO");
-                }else{
-                    if(prof.length()<=5){
-                        JOptionPane.showMessageDialog(null, "NO EXISTEN REGISTROS CON ESA PROFESION, POR FAVOR INTENTELO DE NUEVO");
-                }else{
-                        String aux2 = nom + prof;
-                        a4 = searchProf(treeAlf2, aux2);
-                        setRows(matriz, a4);
-                        if(a4.size()==0){
-                            JOptionPane.showMessageDialog(null, "NO ESXTTEN COINCIDENCIAS DE REGISTRO, INTENTELOS NUEVAMENTE");
-                        }
-                    }
-                }
-        }else{
-            JOptionPane.showMessageDialog(null, "LOS CAMPOS ESTAN VACIOS AGREGUE ALGUN DATO PARA BUSQUEDA");
-        }
-        searchProf.setText("");
-        searchProm.setText("");
-        searchNom.setText("");
-        a4.clear();
-    }//GEN-LAST:event_searchNaPrActionPerformed
-
-    private void searchPromProfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchPromProfActionPerformed
-        ArrayList<Integer> a4 = new ArrayList<Integer>();
-        String prof = getProf();
-        String prom = getProm();
-        String nom = getNom();
-        if(nom.compareTo("")!=0){
-            JOptionPane.showMessageDialog(null, "ESTA BUSQUEDA SOLO PERMITE DATOS DE PROFESION Y PROMEDIO, INGRESE OTROS DATOS");
-        }else if(prof.compareTo("")!=0 || prom.compareTo("")!=0){
-                if(prof.length()<=5){
-                    JOptionPane.showMessageDialog(null, "LA PROFESION INTRODUCIDA ES INCORRECTA, POR FAVOR INGRESELO DE NUEVO");
-                }else{
-                    int aux = Integer.parseInt(getProm());
-                    if(aux<100){
-                        String aux2 = prof + "0" + prom;
-                        a4 = searchProf(treeAlf4, aux2);
-                        if(a4.size()==0){
-                            JOptionPane.showMessageDialog(null, "NO ESXTTEN COINCIDENCIAS DE REGISTRO, INTENTELOS NUEVAMENTE");
-                        }
-                        setRows(matriz, a4);
-                    }else if(aux==100){
-                        String aux2 = prof + prom;
-                        a4 = searchProf(treeAlf4, aux2);
-                        setRows(matriz, a4);
-                        if(a4.size()==0){
-                            JOptionPane.showMessageDialog(null, "NO ESXTTEN COINCIDENCIAS DE REGISTRO, INTENTELOS NUEVAMENTE");
-                        }
-                    }else if(aux<60 || aux>100){
-                    JOptionPane.showMessageDialog(null, "NO EXISTE REGISTRO CON ESE PROMEDIO INTENTELO DE NUEVO");
-                }
-                }
-        }else{
-            JOptionPane.showMessageDialog(null, "LOS CAMPOS ESTAN VACIOS AGREGUE ALGUN DATO PARA BUSQUEDA");
-        }
-        searchProf.setText("");
-        searchProm.setText("");
-        searchNom.setText("");
-        a4.clear();
-    }//GEN-LAST:event_searchPromProfActionPerformed
-
-    private void advSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_advSearchActionPerformed
-        searchByN.setVisible(false);
-        searchByProm.setVisible(false);
-        searchByProf.setVisible(false);
-        searchNaPr.setVisible(true);
-        searchNaProm.setVisible(true);
-        searchPromProf.setVisible(true);
-        simpleSearch.setVisible(true);
-        advSearch.setVisible(false);
-    }//GEN-LAST:event_advSearchActionPerformed
-
-    private void simpleSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_simpleSearchActionPerformed
-        searchByN.setVisible(true);
-        searchByProm.setVisible(true);
-        searchByProf.setVisible(true);
-        searchNaPr.setVisible(false);
-        searchNaProm.setVisible(false);
-        searchPromProf.setVisible(false);
-        simpleSearch.setVisible(false);
-        advSearch.setVisible(true);
-    }//GEN-LAST:event_simpleSearchActionPerformed
-
     /**
      * @param args the command line arguments
      */
@@ -564,61 +258,6 @@ public class mainView extends javax.swing.JFrame {
         });
     }
     
-    public String getProm(){
-        String prom;
-        prom = searchProm.getText();
-        return prom;
-    }
-    
-    public String getNom(){
-        String nom;
-        nom = searchNom.getText();
-        return nom;
-    }
-    
-    public String getProf(){
-        String prof;
-        prof = searchProf.getText();
-        return prof;
-    }
-    
-    public ArrayList<Integer> searchProm(ArbolNum t, int prom){
-        ArrayList<Integer> aux = new ArrayList<Integer>();
-        ArrayList<Integer> aux2 = new ArrayList<Integer>();
-        aux = t.enOrden();
-        aux2 = t.search(prom);
-        return aux2;
-    }
-    
-    public ArrayList<Integer> searchProf(ArbolAlfanum t, String prof){
-        ArrayList<Integer> aux = new ArrayList<Integer>();
-        ArrayList<Integer> aux2 = new ArrayList<Integer>();
-        aux2 = t.search(prof);
-        System.out.println(aux2);
-        return aux2;
-    }
-    
-    public ArrayList<Integer> searchNom(ArbolAlfanum t, String nom){
-        ArrayList<Integer> aux2 = new ArrayList<Integer>();
-        this.matriz = matriz;
-        aux2 = t.searchSequence(matriz, nom);
-        return aux2;
-    }
-
-    
-    public void setData(String[][] m, ArrayList<Integer> i1, ArrayList<Integer> i2, ArrayList<Integer> i3, ArbolNum t1, ArbolAlfanum t2, ArbolAlfanum t3, ArbolAlfanum t4, ArbolAlfanum t5){
-        matriz = m;
-        a1 = i1;
-        a2 = i2;
-        a3 = i3;
-        treeNum = t1;
-        treeAlf1 = t2;
-        treeAlf2 = t3;
-        treeAlf3 = t4;
-        treeAlf4 = t5;
-    }
-    
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton advSearch;
     private javax.swing.JButton filNomb;
@@ -641,4 +280,113 @@ public class mainView extends javax.swing.JFrame {
     private javax.swing.JButton searchPromProf;
     private javax.swing.JButton simpleSearch;
     // End of variables declaration//GEN-END:variables
+
+    public JButton getAdvSearch() {
+        return advSearch;
+    }
+
+    public JButton getFilNomb() {
+        return filNomb;
+    }
+
+    public JButton getFilProm() {
+        return filProm;
+    }
+
+    public JButton getFiltProf() {
+        return filtProf;
+    }
+
+    public JButton getSearchByN() {
+        return searchByN;
+    }
+
+    public JButton getSearchByProf() {
+        return searchByProf;
+    }
+
+    public JButton getSearchByProm() {
+        return searchByProm;
+    }
+
+    public JButton getSearchNaPr() {
+        return searchNaPr;
+    }
+
+    public JButton getSearchNaProm() {
+        return searchNaProm;
+    }
+
+    public JButton getSearchPromProf() {
+        return searchPromProf;
+    }
+
+    public JButton getSimpleSearch() {
+        return simpleSearch;
+    }
+
+    public JTextField getSearchNom() {
+        return searchNom;
+    }
+
+    public JTextField getSearchProf() {
+        return searchProf;
+    }
+
+    public JTextField getSearchProm() {
+        return searchProm;
+    }
+
+    public void setLista(JTable lista) {
+        this.lista = lista;
+    }
+
+    public JTable getLista() {
+        return lista;
+    }
+
+    public void setSearchProm(String searchProm) {
+        this.searchProm.setText(searchProm);
+    }
+
+    public void setSearchNom(String searchNom) {
+        this.searchNom.setText(searchNom);
+    }
+
+    public void setSearchProf(String searchProf) {
+        this.searchProf.setText(searchProf);
+    }
+
+    public void setAdvSearch(boolean advSearch) {
+        this.advSearch.setVisible(advSearch);
+    }
+
+    public void setSearchByN(boolean searchByN) {
+        this.searchByN.setVisible(searchByN);
+    }
+
+    public void setSearchByProf(boolean searchByProf) {
+        this.searchByProf.setVisible(searchByProf);
+    }
+
+    public void setSearchByProm(boolean searchByProm) {
+        this.searchByProm.setVisible(searchByProm);
+    }
+
+    public void setSearchNaPr(boolean searchNaPr) {
+        this.searchNaPr.setVisible(searchNaPr);
+    }
+
+    public void setSearchNaProm(boolean searchNaProm) {
+        this.searchNaProm.setVisible(searchNaProm);
+    }
+
+    public void setSearchPromProf(boolean searchPromProf) {
+        this.searchPromProf.setVisible(searchPromProf);
+    }
+
+    public void setSimpleSearch(boolean simpleSearch) {
+        this.simpleSearch.setVisible(simpleSearch);
+    }
+
 }

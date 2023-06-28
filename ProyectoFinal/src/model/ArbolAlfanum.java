@@ -123,13 +123,22 @@ public class ArbolAlfanum {
     }
     
     public ArrayList<Integer> searchSequence(String[][] arreglo,String a){
-        int posicion = -1;
-        for(int i = 1; i <627; i++){
-            if(arreglo[i][0].compareTo(a)==0){
-                s2.add(i);
-          break;
-         }
-       }
+        if(a.length()>1){
+            for(int i = 1; i <627; i++){
+                if(arreglo[i][0].contains(a)){
+                    s2.add(i);
+                    //break;
+                }
+            }
+        }else{
+            for(int i = 1; i <627; i++){
+                if(arreglo[i][0].substring(0, 1).equalsIgnoreCase(a)){
+                    s2.add(i);
+                    //break;
+                }
+            }
+        }
+        
        return s2;
-          }
+    }
 }

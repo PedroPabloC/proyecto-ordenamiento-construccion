@@ -141,9 +141,9 @@
                               </Group>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="advSearch" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="simpleSearch" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="advSearch" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
@@ -178,57 +178,36 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="jButton1"/>
           </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="filPromActionPerformed"/>
-          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="filNomb">
           <Properties>
             <Property name="text" type="java.lang.String" value="jButton1"/>
           </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="filNombActionPerformed"/>
-          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="filtProf">
           <Properties>
             <Property name="text" type="java.lang.String" value="jButton1"/>
           </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="filtProfActionPerformed"/>
-          </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="searchProm">
           <Properties>
             <Property name="text" type="java.lang.String" value="jTextField1"/>
           </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="searchPromActionPerformed"/>
-          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="searchByProm">
           <Properties>
             <Property name="text" type="java.lang.String" value="jButton1"/>
           </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="searchByPromActionPerformed"/>
-          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="searchByProf">
           <Properties>
             <Property name="text" type="java.lang.String" value="jButton1"/>
           </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="searchByProfActionPerformed"/>
-          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="searchByN">
           <Properties>
             <Property name="text" type="java.lang.String" value="jButton1"/>
           </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="searchByNActionPerformed"/>
-          </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="searchProf">
           <Properties>
@@ -259,41 +238,26 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="jButton1"/>
           </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="searchNaPrActionPerformed"/>
-          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="searchNaProm">
           <Properties>
             <Property name="text" type="java.lang.String" value="jButton1"/>
           </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="searchNaPromActionPerformed"/>
-          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="searchPromProf">
           <Properties>
             <Property name="text" type="java.lang.String" value="jButton1"/>
           </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="searchPromProfActionPerformed"/>
-          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="advSearch">
           <Properties>
             <Property name="text" type="java.lang.String" value="jButton1"/>
           </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="advSearchActionPerformed"/>
-          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="simpleSearch">
           <Properties>
             <Property name="text" type="java.lang.String" value="jButton2"/>
           </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="simpleSearchActionPerformed"/>
-          </Events>
         </Component>
       </SubComponents>
     </Container>
