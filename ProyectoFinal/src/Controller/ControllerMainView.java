@@ -67,73 +67,21 @@ public class ControllerMainView implements ActionListener{
     
     public ControllerMainView(mainView view){
         this.view=view;
-        this.view.getAdvSearch().addActionListener(this);
         this.view.getFilNomb().addActionListener(this);
-        this.view.getFilProm().addActionListener(this);
-        this.view.getFiltProf().addActionListener(this);
-        this.view.getSearchByN().addActionListener(this);
-        this.view.getSearchByProf().addActionListener(this);
         this.view.getSearchByProm().addActionListener(this);
-        this.view.getSearchNaPr().addActionListener(this);
-        this.view.getSearchNaProm().addActionListener(this);
-        this.view.getSearchPromProf().addActionListener(this);
-        this.view.getSimpleSearch().addActionListener(this);
+        this.view.getSearch().addActionListener(this);
+        
         this.setModel();
     }
     @Override
     public void actionPerformed(ActionEvent e) {
-        if(view.getAdvSearch()==e.getSource()){
-            view.setSearchByN(false);
-            view.setSearchByProm(false);
-            view.setSearchByProf(false);
-            view.setSearchNaPr(true);
-            view.setSearchNaProm(true);
-            view.setSearchPromProf(true);
-            view.setSimpleSearch(true);
-            view.setAdvSearch(false);            
+        
+        if(view.getSearch()==e.getSource()){
+            search();
         }
+        
         if(view.getFilNomb()==e.getSource()){
             setRows(matriz, a1);
-        }
-        if(view.getFilProm()==e.getSource()){
-            setRows(matriz, a3);
-        }
-        if(view.getFiltProf()==e.getSource()){
-            setRows(matriz, a2);  
-        }
-        if(view.getSearchByN()==e.getSource()){
-            ArrayList<Integer> a4 = new ArrayList<Integer>();
-            String nom = getNom();
-            if(nom.compareTo("")!=0){
-                        a4 = searchNom(treeAlf1, nom);
-                        setRows(matriz, a4);
-                        if(a4.size()==0){
-                                JOptionPane.showMessageDialog(null, "NO ESXTTEN COINCIDENCIAS DE REGISTRO, INTENTELOS NUEVAMENTE");
-                    }
-            }else{
-                JOptionPane.showMessageDialog(null, "LOS CAMPOS ESTAN VACIOS AGREGUE UN DATO PARA SU BUSQUEDA");
-            }
-            view.setSearchNom("");
-            a4.clear();
-        }
-        if(view.getSearchByProf()==e.getSource()){
-            ArrayList<Integer> a4 = new ArrayList<Integer>();
-            String prof = getProf();
-            if(prof.compareTo("")!=0){
-                    if(prof.length()<=5){
-                        JOptionPane.showMessageDialog(null, "LA PROFESION BUSCADA NO SE ENCUENTRA, PORFAVOR INTENTE OTRA O ESCRIBA NUEVAMENTE SU BUSQUEDA");
-                    }else{
-                        a4 = searchProf(treeAlf1, prof);
-                        setRows(matriz, a4);
-                        if(a4.size()==0){
-                                JOptionPane.showMessageDialog(null, "NO ESXTTEN COINCIDENCIAS DE REGISTRO, INTENTELOS NUEVAMENTE");
-                            }
-                    }
-                }else{
-                JOptionPane.showMessageDialog(null, "LOS CAMPOS ESTAN VACIOS AGREGUE UN DATO PARA SU BUSQUEDA");
-            }
-            view.setSearchProf("");
-            a4.clear();
         }
 
         if(view.getSearchByProm()==e.getSource()){
@@ -152,125 +100,8 @@ public class ControllerMainView implements ActionListener{
                 }else{
                 JOptionPane.showMessageDialog(null, "LOS CAMPOS ESTAN VACIOS AGREGUE UN DATO PARA SU BUSQUEDA");
             }
-
             view.setSearchProm("");
             a4.clear();
-        }
-        if(view.getSearchNaPr()==e.getSource()){
-            ArrayList<Integer> a4 = new ArrayList<Integer>();
-            String prof = getProf();
-            String prom = getProm();
-            String nom = getNom();
-            if(prom.compareTo("")!=0){
-                JOptionPane.showMessageDialog(null, "ESTA BUSQUEDA SOLO PERMITE DATOS DE NOMBRE Y PROFESION, INGRESE OTROS DATOS");
-            }else if(nom.compareTo("")!=0 || prof.compareTo("")!=0){
-                    if(nom.length()<=10){
-                        JOptionPane.showMessageDialog(null, "EL NOMBRE INTRODUCIDO ES INCORRECTO, POR FAVOR INGRESELO DE NUEVO");
-                    }else{
-                        if(prof.length()<=5){
-                            JOptionPane.showMessageDialog(null, "NO EXISTEN REGISTROS CON ESA PROFESION, POR FAVOR INTENTELO DE NUEVO");
-                    }else{
-                            String aux2 = nom + prof;
-                            a4 = searchProf(treeAlf2, aux2);
-                            setRows(matriz, a4);
-                            if(a4.size()==0){
-                                JOptionPane.showMessageDialog(null, "NO ESXTTEN COINCIDENCIAS DE REGISTRO, INTENTELOS NUEVAMENTE");
-                            }
-                        }
-                    }
-            }else{
-                JOptionPane.showMessageDialog(null, "LOS CAMPOS ESTAN VACIOS AGREGUE ALGUN DATO PARA BUSQUEDA");
-            }
-            view.setSearchProf("");
-            view.setSearchProm("");
-            view.setSearchNom("");
-            a4.clear();
-        }
-        if(view.getSearchNaProm()==e.getSource()){
-            ArrayList<Integer> a4 = new ArrayList<Integer>();
-            String prof = getProf();
-            String prom = getProm();
-            String nom = getNom();
-            if(prof.compareTo("")!=0){
-                JOptionPane.showMessageDialog(null, "ESTA BUSQUEDA SOLO PERMITE DATOS DE NOMBRE Y PROMEDIO, INGRESE OTROS DATOS");
-            }else if(nom.compareTo("")!=0 || prom.compareTo("")!=0){
-                    if(nom.length()<=10){
-                        JOptionPane.showMessageDialog(null, "EL NOMBRE INTRODUCIDO ES INCORRECTO, POR FAVOR INGRESELO DE NUEVO");
-                    }else{
-                        int aux = Integer.parseInt(getProm());
-                        if(aux<100){
-                            String aux2 = nom + "0" + prom;
-                            a4 = searchProf(treeAlf3, aux2);
-                            if(a4.size()==0){
-                                JOptionPane.showMessageDialog(null, "NO ESXTTEN COINCIDENCIAS DE REGISTRO, INTENTELOS NUEVAMENTE");
-                            }
-                            setRows(matriz, a4);
-                        }else if(aux==100){
-                            String aux2 = nom + prom;
-                            a4 = searchProf(treeAlf3, aux2);
-                            setRows(matriz, a4);
-                            if(a4.size()==0){
-                                JOptionPane.showMessageDialog(null, "NO ESXTTEN COINCIDENCIAS DE REGISTRO, INTENTELOS NUEVAMENTE");
-                            }
-                        }else if(aux<60 || aux>100){
-                        JOptionPane.showMessageDialog(null, "NO EXISTE REGISTRO CON ESE PROMEDIO INTENTELO DE NUEVO");
-                    }
-                    }
-            }else{
-                JOptionPane.showMessageDialog(null, "LOS CAMPOS ESTAN VACIOS AGREGUE ALGUN DATO PARA BUSQUEDA");
-            }
-            view.setSearchProf("");
-            view.setSearchProm("");
-            view.setSearchNom("");
-            a4.clear();
-        }
-        if(view.getSearchPromProf()==e.getSource()){
-            ArrayList<Integer> a4 = new ArrayList<Integer>();
-            String prof = getProf();
-            String prom = getProm();
-            String nom = getNom();
-            if(nom.compareTo("")!=0){
-                JOptionPane.showMessageDialog(null, "ESTA BUSQUEDA SOLO PERMITE DATOS DE PROFESION Y PROMEDIO, INGRESE OTROS DATOS");
-            }else if(prof.compareTo("")!=0 || prom.compareTo("")!=0){
-                    if(prof.length()<=5){
-                        JOptionPane.showMessageDialog(null, "LA PROFESION INTRODUCIDA ES INCORRECTA, POR FAVOR INGRESELO DE NUEVO");
-                    }else{
-                        int aux = Integer.parseInt(getProm());
-                        if(aux<100){
-                            String aux2 = prof + "0" + prom;
-                            a4 = searchProf(treeAlf4, aux2);
-                            if(a4.size()==0){
-                                JOptionPane.showMessageDialog(null, "NO ESXTTEN COINCIDENCIAS DE REGISTRO, INTENTELOS NUEVAMENTE");
-                            }
-                            setRows(matriz, a4);
-                        }else if(aux==100){
-                            String aux2 = prof + prom;
-                            a4 = searchProf(treeAlf4, aux2);
-                            setRows(matriz, a4);
-                            if(a4.size()==0){
-                                JOptionPane.showMessageDialog(null, "NO ESXTTEN COINCIDENCIAS DE REGISTRO, INTENTELOS NUEVAMENTE");
-                            }
-                        }else if(aux<60 || aux>100){
-                        JOptionPane.showMessageDialog(null, "NO EXISTE REGISTRO CON ESE PROMEDIO INTENTELO DE NUEVO");
-                    }
-                    }
-            }else{
-                JOptionPane.showMessageDialog(null, "LOS CAMPOS ESTAN VACIOS AGREGUE ALGUN DATO PARA BUSQUEDA");
-            }
-            view.setSearchProf("");
-            view.setSearchProm("");
-            view.setSearchNom("");
-            a4.clear();
-        }
-        if(view.getSimpleSearch()==e.getSource()){
-            view.setSearchByN(true);
-            view.setSearchByProm(true);
-            view.setSearchByProf(true);
-            view.setSearchNaPr(false);
-            view.setSearchNaProm(false);
-            view.setSearchPromProf(false);
-            view.setSimpleSearch(false);
-            view.setAdvSearch(true);
         }
     }
     
@@ -312,7 +143,71 @@ public class ControllerMainView implements ActionListener{
         ArrayList<Integer> aux2 = new ArrayList<Integer>();
         this.matriz = matriz;
         aux2 = t.searchSequence(matriz, nom);
+        System.out.println(aux2);
         return aux2;
+    }
+    
+    public void search(){
+        String promedio=view.getSearchProm().getText();
+        String profesion= view.getSearchProf().getText();;
+        String nombre=view.getSearchNom().getText();;
+        ArrayList<Integer> a4 = new ArrayList<Integer>();
+        
+        
+        if(nombre.compareTo("")!=0){            
+            a4 = searchNom(treeAlf1, nombre);
+            if(a4.size()==0){
+                    JOptionPane.showMessageDialog(null, "NO ESXTTEN COINCIDENCIAS DE REGISTRO, INTENTELOS NUEVAMENTE");
+            }           
+        }
+        if(profesion.compareTo("")!=0){
+                    if(profesion.length()<=5){
+                        JOptionPane.showMessageDialog(null, "LA PROFESION BUSCADA NO SE ENCUENTRA, PORFAVOR INTENTE OTRA O ESCRIBA NUEVAMENTE SU BUSQUEDA");
+                    }else{
+                        ArrayList<Integer> a5 = new ArrayList<Integer>();
+                        a5 = searchProf(treeAlf1, profesion);
+                        if(a4.isEmpty()){
+                            a4=a5;                                                        
+                        }else{
+                            ArrayList<Integer> a6 = new ArrayList<Integer>();
+                            for(int i=0;i<a4.size();i++){
+                                for(int j=0;j<a5.size();j++){
+                                    if(a4.get(i).equals(a5.get(j))){
+                                        a6.add(a5.get(j));
+                                    }
+                                }
+                                System.out.println("");
+                            }
+                            System.out.println(a6);
+                            a4=a6;
+                        }
+                        if(a4.size()==0){
+                                JOptionPane.showMessageDialog(null, "NO ESXTTEN COINCIDENCIAS DE REGISTRO, INTENTELOS NUEVAMENTE");
+                        }
+                    }            
+        }
+        if(promedio.compareTo("")!=0){
+            String prom = getProm();
+            if(prom.compareTo("")!=0){
+                    int aux = Integer.parseInt(getProm());
+                    if(aux<60 || aux>100){
+                        JOptionPane.showMessageDialog(null, "NO EXISTEN REGISTROS CON ESE PROMEDIO");
+                    }else if(treeNum.existe(aux)){
+                        JOptionPane.showMessageDialog(null, "NO EXISTEN REGISTROS CON ESE PROMEDIO");
+                    }else{
+                        a4 = searchProm(treeNum, aux);
+                        setRows(matriz, a4);
+                    }
+                }else{
+                JOptionPane.showMessageDialog(null, "LOS CAMPOS ESTAN VACIOS AGREGUE UN DATO PARA SU BUSQUEDA");
+            }
+        }
+        setRows(matriz, a4);
+        view.setSearchNom("");
+        view.setSearchProf("");
+        view.setSearchProm("");
+        a4.clear();        
+        
     }
   
     public void setData(String[][] m, ArrayList<Integer> i1, ArrayList<Integer> i2, ArrayList<Integer> i3, ArbolNum t1, ArbolAlfanum t2, ArbolAlfanum t3, ArbolAlfanum t4, ArbolAlfanum t5){
