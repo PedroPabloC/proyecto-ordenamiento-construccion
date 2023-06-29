@@ -105,16 +105,12 @@ public class ControllerMainView implements ActionListener{
             ArrayList<Integer> a4 = new ArrayList<Integer>();
             String nom = getNom();
             if(nom.compareTo("")!=0){
-                    if(nom.length()<=10){
-                        JOptionPane.showMessageDialog(null, "NO EXISTEN REGISTROS CON ESOS DATOS, PORFAVOR REVISE LOS DATOS O ESCRIBA DE NUEVO EL NOMBRE");
-                    }else{
                         a4 = searchNom(treeAlf1, nom);
                         setRows(matriz, a4);
                         if(a4.size()==0){
                                 JOptionPane.showMessageDialog(null, "NO ESXTTEN COINCIDENCIAS DE REGISTRO, INTENTELOS NUEVAMENTE");
-                            }
                     }
-                }else{
+            }else{
                 JOptionPane.showMessageDialog(null, "LOS CAMPOS ESTAN VACIOS AGREGUE UN DATO PARA SU BUSQUEDA");
             }
             view.setSearchNom("");
