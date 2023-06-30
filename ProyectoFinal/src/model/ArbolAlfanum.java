@@ -123,6 +123,7 @@ public class ArbolAlfanum {
     }
     
     public ArrayList<Integer> searchSequence(String[][] arreglo,String a){
+        s2.clear();
         if(a.length()>1){
             for(int i = 1; i <627; i++){
                 if(arreglo[i][0].contains(a)){
