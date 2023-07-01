@@ -7,6 +7,7 @@ package vista;
 
 import java.util.ArrayList;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
@@ -22,7 +23,6 @@ public class mainView extends javax.swing.JFrame {
     public mainView() {
         initComponents();
         filNomb.setText("Filtrar por Nombre");
-        searchByProm.setText("Buscar por Promedio");
         searchNom.setText(null);
         searchProf.setText(null);
         searchProm.setText(null);
@@ -30,6 +30,7 @@ public class mainView extends javax.swing.JFrame {
         label2.setText("Profesión:");
         label3.setText("Promedio:");
     }
+
     
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -39,14 +40,15 @@ public class mainView extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         lista = new javax.swing.JTable();
         filNomb = new javax.swing.JButton();
-        searchProm = new javax.swing.JTextField();
-        searchByProm = new javax.swing.JButton();
         searchProf = new javax.swing.JTextField();
         searchNom = new javax.swing.JTextField();
         label1 = new javax.swing.JLabel();
         label2 = new javax.swing.JLabel();
         label3 = new javax.swing.JLabel();
         Search = new javax.swing.JButton();
+        searchProm = new javax.swing.JTextField();
+        CBrangos = new javax.swing.JComboBox<>();
+        searchProm2 = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -67,10 +69,6 @@ public class mainView extends javax.swing.JFrame {
 
         filNomb.setText("jButton1");
 
-        searchProm.setText("jTextField1");
-
-        searchByProm.setText("jButton1");
-
         searchProf.setText("jTextField1");
 
         searchNom.setText("jTextField2");
@@ -83,27 +81,36 @@ public class mainView extends javax.swing.JFrame {
 
         Search.setText("Search");
 
+        CBrangos.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { ">= X", "<= X", "= X", "<= X <=" }));
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(88, 88, 88)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(filNomb)
-                    .addComponent(Search))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(88, 88, 88)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(filNomb)
+                            .addComponent(Search))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(label2)
+                            .addComponent(label1)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(label3)))
+                .addGap(12, 12, 12)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(label3)
-                    .addComponent(label2)
-                    .addComponent(label1))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(searchNom, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(searchProf, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(searchProm, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(62, 62, 62)
-                .addComponent(searchByProm)
+                    .addComponent(searchNom, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(searchProf, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(searchProm, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(CBrangos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(searchProm2, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(37, 37, 37)
@@ -116,14 +123,14 @@ public class mainView extends javax.swing.JFrame {
                 .addGap(62, 62, 62)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 381, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(filNomb)
                         .addGap(18, 18, 18)
                         .addComponent(Search)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addContainerGap())
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 13, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(searchNom, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(label1))
@@ -133,11 +140,16 @@ public class mainView extends javax.swing.JFrame {
                             .addComponent(label2))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(searchProm, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(label3))
-                            .addComponent(searchByProm))
-                        .addGap(35, 35, 35))))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(label3)
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(1, 1, 1)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(CBrangos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(searchProm2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(searchProm, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addContainerGap(42, Short.MAX_VALUE))))))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -190,6 +202,7 @@ public class mainView extends javax.swing.JFrame {
     }
    
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<String> CBrangos;
     private javax.swing.JButton Search;
     private javax.swing.JButton filNomb;
     private javax.swing.JPanel jPanel1;
@@ -198,17 +211,14 @@ public class mainView extends javax.swing.JFrame {
     private javax.swing.JLabel label2;
     private javax.swing.JLabel label3;
     private javax.swing.JTable lista;
-    private javax.swing.JButton searchByProm;
     private javax.swing.JTextField searchNom;
     private javax.swing.JTextField searchProf;
     private javax.swing.JTextField searchProm;
+    private javax.swing.JTextField searchProm2;
     // End of variables declaration//GEN-END:variables
+
     public JButton getFilNomb() {
         return filNomb;
-    }
-
-    public JButton getSearchByProm() {
-        return searchByProm;
     }
 
     public JTextField getSearchNom() {
@@ -243,12 +253,19 @@ public class mainView extends javax.swing.JFrame {
         this.searchProf.setText(searchProf);
     }
 
-    public void setSearchByProm(boolean searchByProm) {
-        this.searchByProm.setVisible(searchByProm);
-    }
-
     public JButton getSearch() {
         return Search;
     }
 
+    public int getCBrangos() {
+        return CBrangos.getSelectedIndex();
+    }
+
+    public JTextField getSearchProm2() {
+        return searchProm2;
+    }
+
+    public void setSearchProm2(String searchProm2) {
+        this.searchProm2.setText(searchProm2);
+    }   
 }

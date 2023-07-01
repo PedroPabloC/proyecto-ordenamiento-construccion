@@ -43,10 +43,10 @@ public class ControllerMainView implements ActionListener{
         JTable lista=view.getLista();
         lista.setModel(mT);
         view.setLista(lista);
-        //lista.setModel(mT);
     }
     
     public void setRows(String[][] m, ArrayList<Integer> ind){
+        clearTable();
         mT.setRowCount(ind.size());
         mT.setColumnCount(3);
         
@@ -68,7 +68,6 @@ public class ControllerMainView implements ActionListener{
     public ControllerMainView(mainView view){
         this.view=view;
         this.view.getFilNomb().addActionListener(this);
-        this.view.getSearchByProm().addActionListener(this);
         this.view.getSearch().addActionListener(this);        
         this.setModel();
     }
@@ -82,51 +81,14 @@ public class ControllerMainView implements ActionListener{
         if(view.getFilNomb()==e.getSource()){
             setRows(matriz, a1);
         }
-
-        if(view.getSearchByProm()==e.getSource()){
-            ArrayList<Integer> a4 = new ArrayList<Integer>();
-            String prom = getProm();
-            if(prom.compareTo("")!=0){
-                    int aux = Integer.parseInt(getProm());
-                    if(aux<60 || aux>100){
-                        JOptionPane.showMessageDialog(null, "NO EXISTEN REGISTROS CON ESE PROMEDIO");
-                    }else if(treeNum.existe(aux)){
-                        JOptionPane.showMessageDialog(null, "NO EXISTEN REGISTROS CON ESE PROMEDIO");
-                    }else{
-                        a4 = searchProm(treeNum, aux);
-                        setRows(matriz, a4);
-                    }
-                }else{
-                JOptionPane.showMessageDialog(null, "LOS CAMPOS ESTAN VACIOS AGREGUE UN DATO PARA SU BUSQUEDA");
-            }
-            view.setSearchProm("");
-            a4.clear();
-        }
     }
     
-    public String getProm(){
-        String prom;
-        prom = view.getSearchProm().getText();
-        return prom;
-    }
-    
-    public String getNom(){
-        String nom;
-        nom = view.getSearchNom().getText();
-        return nom;
-    }
-    
-    public String getProf(){
-        String prof;
-        prof = view.getSearchProf().getText();
-        return prof;
-    }
-    
-    public ArrayList<Integer> searchProm(ArbolNum t, int prom){
+    public ArrayList<Integer> searchProm(ArbolNum t, int prom,int prom2,int simbolo){
         ArrayList<Integer> aux = new ArrayList<Integer>();
         ArrayList<Integer> aux2 = new ArrayList<Integer>();
         aux = t.enOrden();
-        aux2 = t.search(prom);
+        aux2 = t.search(prom,prom2,simbolo,matriz,a3);
+        
         return aux2;
     }
     
@@ -141,18 +103,20 @@ public class ControllerMainView implements ActionListener{
         ArrayList<Integer> aux2 = new ArrayList<Integer>();
         aux2.clear();
         aux2 = t.searchSequence(matriz, nom);
-        System.out.println(aux2);
         return aux2;
     }
     
     public void search(){
         String promedio=view.getSearchProm().getText();
-        String profesion= view.getSearchProf().getText();;
-        String nombre=view.getSearchNom().getText();;
+        String promedio2=view.getSearchProm2().getText();
+        String profesion= view.getSearchProf().getText();
+        String nombre=view.getSearchNom().getText();
+        int simbolo=view.getCBrangos();
         ArrayList<Integer> a4 = new ArrayList<Integer>();
         ArrayList<Integer> a5 = new ArrayList<Integer>();
         ArrayList<Integer> a6 = new ArrayList<Integer>();
-        
+        ArrayList<Integer> a7 = new ArrayList<Integer>();
+        ArrayList<Integer> a8 = new ArrayList<Integer>();
         if(nombre.compareTo("")!=0){                        
             a4.clear();
             a4 = searchNom(treeAlf1, nombre);
@@ -183,30 +147,61 @@ public class ControllerMainView implements ActionListener{
 
             }            
         }
-        if(promedio.compareTo("")!=0){
-            String prom = getProm();
-            if(prom.compareTo("")!=0){
-                    int aux = Integer.parseInt(getProm());
-                    if(aux<60 || aux>100){
-                        JOptionPane.showMessageDialog(null, "NO EXISTEN REGISTROS CON ESE PROMEDIO");
-                    }else if(treeNum.existe(aux)){
-                        JOptionPane.showMessageDialog(null, "NO EXISTEN REGISTROS CON ESE PROMEDIO");
-                    }else{
-                        a4 = searchProm(treeNum, aux);
-                        //setRows(matriz, a4);
+        if(promedio.compareTo("")!=0){                        
+            int aux = Integer.parseInt(promedio);
+            if(aux<60 || aux>100){
+                JOptionPane.showMessageDialog(null, "NO EXISTEN REGISTROS CON ESE PROMEDIO");
+            }else if(treeNum.existe(aux)){
+                JOptionPane.showMessageDialog(null, "NO EXISTEN REGISTROS CON ESE PROMEDIO");
+            }else{
+                if(simbolo!=3){
+                    a8 = searchProm(treeNum, aux, 0, simbolo);
+                    
+                    if(a4.isEmpty()){
+                        a4=a8;                                                        
+                    }else{                                                        
+                        for(int i=0;i<a4.size();i++){
+                            for(int j=0;j<a8.size();j++){
+                                if(a4.get(i).equals(a8.get(j))){
+                                    a7.add(a4.get(i));
+                                }
+                            }
+                        }
+                        a4=a7;
                     }
-                }else{
-                JOptionPane.showMessageDialog(null, "LOS CAMPOS ESTAN VACIOS AGREGUE UN DATO PARA SU BUSQUEDA");
+                }else if(promedio2.compareTo("")==0&&simbolo==3){
+                    JOptionPane.showMessageDialog(null, "Escribe un numero valido en el segundo promedio");
+                }
+                else{
+                    a8 = searchProm(treeNum, aux, Integer.parseInt(promedio2), simbolo);                 
+                    
+                    if(a4.isEmpty()){
+                        a4=a8;                                                        
+                    }else{                                                        
+                        for(int i=0;i<a4.size();i++){
+                            for(int j=0;j<a8.size();j++){
+                                if(a4.get(i).equals(a8.get(j))){
+                                    a7.add(a4.get(i));
+                                }
+                            }
+                        }
+                        a4=a7;
+                    }
+                }
+                
             }
         }
+        
         setRows(matriz, a4);
         view.setSearchNom("");
         view.setSearchProf("");
         view.setSearchProm("");
+        view.setSearchProm2("");
         a4.clear();  
         a5.clear();
-        a6.clear();
-        
+        a6.clear();   
+        a7.clear();
+        a8.clear();
     }
   
     public void setData(String[][] m, ArrayList<Integer> i1, ArrayList<Integer> i2, ArrayList<Integer> i3, ArbolNum t1, ArbolAlfanum t2, ArbolAlfanum t3, ArbolAlfanum t4, ArbolAlfanum t5){
