@@ -42,10 +42,7 @@ public class ArbolAlfanum {
     }
     
     public boolean empty(){
-        if(raiz==null){
-            return true;
-        }
-        return false;
+        return raiz==null;
     }
     
     public void insertar(String a, int ind){
@@ -83,7 +80,7 @@ public class ArbolAlfanum {
             }
             raiz.left.enOrden();
         }
-        return arr;
+        return arr;        
     }
     
     public boolean existe(String a){
@@ -128,14 +125,12 @@ public class ArbolAlfanum {
             for(int i = 1; i <627; i++){
                 if(arreglo[i][0].contains(a)){
                     s2.add(i);
-                    //break;
                 }
             }
         }else{
             for(int i = 1; i <627; i++){
                 if(arreglo[i][0].substring(0, 1).equalsIgnoreCase(a)){
                     s2.add(i);
-                    //break;
                 }
             }
         }
