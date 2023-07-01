@@ -151,9 +151,8 @@ public class ControllerMainView implements ActionListener{
             int aux = Integer.parseInt(promedio);
             if(aux<60 || aux>100){
                 JOptionPane.showMessageDialog(null, "NO EXISTEN REGISTROS CON ESE PROMEDIO");
-            }else if(treeNum.existe(aux)){
-                JOptionPane.showMessageDialog(null, "NO EXISTEN REGISTROS CON ESE PROMEDIO");
-            }else{
+            }
+            else{
                 if(simbolo!=3){
                     a8 = searchProm(treeNum, aux, 0, simbolo);
                     
