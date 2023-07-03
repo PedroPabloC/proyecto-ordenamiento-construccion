@@ -36,10 +36,10 @@ public class AlfanumericTree {
     public void insert(String a, int ind){
         if(empty()){
             AlfanumericNode newNode = new AlfanumericNode();
-            newNode.dato = a;
-            newNode.index = ind;
             newNode.right = new AlfanumericTree();
             newNode.left = new AlfanumericTree();
+            newNode.dato = a;
+            newNode.index = ind;                        
             root = newNode;
         }else{
             int result = root.dato.compareTo(a);

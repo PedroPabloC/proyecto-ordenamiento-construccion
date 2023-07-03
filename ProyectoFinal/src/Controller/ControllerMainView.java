@@ -149,7 +149,6 @@ public class ControllerMainView implements ActionListener{
         ArrayList<Integer> professionResult = new ArrayList<Integer>();
         ArrayList<Integer> averageResult = new ArrayList<Integer>();
         if(name.compareTo("")!=0){                        
-
             finalResult = searchName(professionTree, name);
             if(finalResult.size()==0){
                     JOptionPane.showMessageDialog(null, "NO ESXTTEN COINCIDENCIAS DE REGISTRO, INTENTELOS NUEVAMENTE");
@@ -164,7 +163,6 @@ public class ControllerMainView implements ActionListener{
                     finalResult=professionResult;                                                        
                 }else{                                                        
                     finalResult=JointSearch2Param(finalResult,professionResult);
-
                 }
                 if(finalResult.size()==0){
                         JOptionPane.showMessageDialog(null, "LA PROFESION BUSCADA NO SE ENCUENTRA");
@@ -179,8 +177,7 @@ public class ControllerMainView implements ActionListener{
             }
             else{
                 if(symbol!=3){
-                    averageResult = searchAverage(averageTree, numericAverage, 0, symbol);
-                    
+                    averageResult = searchAverage(averageTree, numericAverage, 0, symbol);                    
                     if(finalResult.isEmpty()){
                         finalResult=averageResult;                                                        
                     }else{                                                        
@@ -190,15 +187,13 @@ public class ControllerMainView implements ActionListener{
                     JOptionPane.showMessageDialog(null, "Escribe un numero valido en el segundo promedio");
                 }
                 else{
-                    averageResult = searchAverage(averageTree, numericAverage, Integer.parseInt(average2), symbol);                 
-                    
+                    averageResult = searchAverage(averageTree, numericAverage, Integer.parseInt(average2), symbol);                                     
                     if(finalResult.isEmpty()){
                         finalResult=averageResult;                                                        
                     }else{                                                        
                         finalResult=JointSearch4Param(finalResult,averageResult);
                     }
-                }
-                
+                }                
             }
         }
         

@@ -12,7 +12,8 @@ import java.util.ArrayList;
  * @author Albert
  */
 public class NumericTree {
-    
+    final int ARCHIVE_ROWS=626;
+    final int DATA_ROWS=584;
     private static ArrayList<Integer> orderedResult = new ArrayList<Integer>();
     private static ArrayList<Integer> treeSearchResult = new ArrayList<Integer>();
     private ArrayList<Integer> averageResult = new ArrayList<Integer>();
@@ -35,10 +36,10 @@ public class NumericTree {
     public void insert(int a, int ind){
         if(empty()){
             NumericNode nuevo = new NumericNode();
-            nuevo.num = a;
-            nuevo.index = ind;
             nuevo.right = new NumericTree();
             nuevo.left = new NumericTree();
+            nuevo.num = a;
+            nuevo.index = ind;                        
             root = nuevo;
         }else{
             if(a>root.num){
@@ -103,7 +104,7 @@ public class NumericTree {
         switch(simbolo) {
             case 0:
                 System.out.println("caso0");
-                for(int i=0;i<626;i++){
+                for(int i=0;i<ARCHIVE_ROWS;i++){
                     if(Integer.parseInt(matriz[a3.get(i)][2])<=a){
                         averageResult.add(a3.get(i));
                     }else{
@@ -113,7 +114,7 @@ public class NumericTree {
                 return averageResult;
             case 1:   
                 System.out.println("caso1");
-                for(int i=584;i>-1;i--){
+                for(int i=DATA_ROWS;i>-1;i--){
                     if(Integer.parseInt(matriz[a3.get(i)][2])>=a){
                         averageResult.add(a3.get(i));
                     }else{
@@ -123,7 +124,7 @@ public class NumericTree {
                 return averageResult;                
             case 2:
                 System.out.println("case2");                
-                for(int i=0;i<584;i++){
+                for(int i=0;i<DATA_ROWS;i++){
                     if(Integer.parseInt(matriz[a3.get(i)][2])==a){
                         averageResult.add(a3.get(i));
                     }
@@ -133,7 +134,7 @@ public class NumericTree {
                 System.out.println("case3");
                 ArrayList<Integer> s3 = new ArrayList<Integer>();
                 
-                for(int i=0;i<626;i++){
+                for(int i=0;i<ARCHIVE_ROWS;i++){
                     if(Integer.parseInt(matriz[a3.get(i)][2])<=b){
                         averageResult.add(a3.get(i));
                     }else{
@@ -141,7 +142,7 @@ public class NumericTree {
                     }
                 }
 
-                for(int i=584;i>-1;i--){
+                for(int i=DATA_ROWS;i>-1;i--){
                     if(Integer.parseInt(matriz[a3.get(i)][2])>=a){
                         treeSearchResult.add(a3.get(i));
                     }else{

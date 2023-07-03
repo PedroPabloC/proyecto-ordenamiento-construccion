@@ -13,6 +13,7 @@ import java.util.Scanner;
  */
 public class Graduates {
     
+    final int ARCHIVE_ROWS=626;
     static String[][] dataArray;
     
     public String[][] reader(String nameA){
@@ -48,7 +49,7 @@ public class Graduates {
     }
     
     public int[] getIndex(String[][] array){
-        int[] indexArray = new int[626];
+        int[] indexArray = new int[ARCHIVE_ROWS];
         String[][] dataArray=array;
         
         for(int i=0; i<dataArray.length-1; i++){
@@ -58,7 +59,7 @@ public class Graduates {
     }
     
     public String[] getName(String[][] array){
-        String[] nameData = new String[626];
+        String[] nameData = new String[ARCHIVE_ROWS];
         String[][] dataArray=array;
         
         for(int i=0; i<dataArray.length-1; i++){
@@ -68,7 +69,7 @@ public class Graduates {
     }
     
     public String[] getProfession(String[][] array){
-        String[] professionData = new String[626];
+        String[] professionData = new String[ARCHIVE_ROWS];
         String[][] dataArray=array;
         
         for(int i=0; i<dataArray.length-1; i++){
@@ -78,7 +79,7 @@ public class Graduates {
     }
     
     public int[] getAverage(String[][] array){
-        int[] averageData = new int[626];
+        int[] averageData = new int[ARCHIVE_ROWS];
         String[][] dataArray=array;
         
         for(int i=0; i<dataArray.length-1; i++){
