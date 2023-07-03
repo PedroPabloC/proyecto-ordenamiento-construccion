@@ -83,7 +83,7 @@ public class ControllerMainView implements ActionListener{
     public ArrayList<Integer> searchAverage(NumericTree averageTree, int average1,int average2,int simbolo){
         ArrayList<Integer> temporalAverageList = new ArrayList<Integer>();
         ArrayList<Integer> averageSearchResult = new ArrayList<Integer>();
-        temporalAverageList = averageTree.enOrden();
+        temporalAverageList = averageTree.inOrder();
         averageSearchResult = averageTree.search(average1,average2,simbolo,dataMatrix,averageIndex);
         
         return averageSearchResult;
@@ -98,7 +98,7 @@ public class ControllerMainView implements ActionListener{
     public ArrayList<Integer> searchName(AlfanumericTree professionTree, String name){
         ArrayList<Integer> nameSearchResult = new ArrayList<Integer>();
         nameSearchResult.clear();
-        nameSearchResult = professionTree.searchSequence(dataMatrix, name);
+        nameSearchResult = professionTree.searchNameString(dataMatrix, name);
         return nameSearchResult;
     }
     

@@ -32,16 +32,13 @@ public class main {
         NumericTree averageTree = new NumericTree();
         AlfanumericTree professionTree = new AlfanumericTree();
         
-        matriz = reader.lector("D:\\Documentos\\NetBeansProjects\\proyecto-ordenamiento-construccion\\ProyectoFinal\\Egresados.csv");
+        matriz = reader.reader("D:\\Documentos\\NetBeansProjects\\proyecto-ordenamiento-construccion\\ProyectoFinal\\Egresados.csv");
         
-        dataMatrix = reader.getMatriz();
+        dataMatrix = reader.getMatrix();
         index = reader.getIndex(matriz);
-        nombre = reader.getNombre(matriz);
-        prof = reader.getProfesion(matriz);
-        prom = reader.getPromedio(matriz);
-        reader.getnombProf(matriz);
-        reader.getnombProm(matriz);
-        reader.getprofProm(matriz);
+        nombre = reader.getName(matriz);
+        prof = reader.getProfession(matriz);
+        prom = reader.getAverage(matriz);
         
         for(int i=0; i<nombre.length; i++){
             nameIndex.add(index[i]);
@@ -51,14 +48,14 @@ public class main {
         controller.setRows(dataMatrix,nameIndex);
         
         for(int i=0; i<prom.length; i++){
-            averageTree.insertar(prom[i], index[i]);
+            averageTree.insert(prom[i], index[i]);
         }
         
         for(int i=0; i<prof.length; i++){
-            professionTree.insertar(prof[i], i);
+            professionTree.insert(prof[i], i);
         }        
         
-        averageIndex = averageTree.enOrden();
+        averageIndex = averageTree.inOrder();
                                
         controller.setData(dataMatrix, nameIndex, averageIndex, averageTree, professionTree);
         

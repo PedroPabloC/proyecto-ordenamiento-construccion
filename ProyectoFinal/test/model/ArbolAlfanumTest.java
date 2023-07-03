@@ -39,9 +39,9 @@ public class ArbolAlfanumTest {
         String pruebaString = "example";
         int indexNodo = 1;
         AlfanumericTree arbolPrueba = new AlfanumericTree();
-        arbolPrueba.insertar(pruebaString, indexNodo);
+        arbolPrueba.insert(pruebaString, indexNodo);
         boolean resultadoEsperado = true;
-        boolean resultadoVerdadero = arbolPrueba.existe(pruebaString);
+        boolean resultadoVerdadero = arbolPrueba.exist(pruebaString);
         assertEquals(resultadoEsperado, resultadoVerdadero);
     }
 
@@ -52,9 +52,9 @@ public class ArbolAlfanumTest {
     public void testEnOrden() {
         System.out.println("enOrden");
         AlfanumericTree arbolPrueba = new AlfanumericTree();
-        arbolPrueba.insertar("example1", 0);
-        arbolPrueba.insertar("example2", 1);
-        ArrayList<Integer> resultadoVerdadero = arbolPrueba.enOrden();
+        arbolPrueba.insert("example1", 0);
+        arbolPrueba.insert("example2", 1);
+        ArrayList<Integer> resultadoVerdadero = arbolPrueba.inOrder();
         ArrayList<Integer> resultadoEsperado = new ArrayList<Integer>();
         resultadoEsperado.add(1);
         resultadoEsperado.add(2);
@@ -70,9 +70,9 @@ public class ArbolAlfanumTest {
         String pruebaString = "example";
         int indexNodo = 1;
         AlfanumericTree arbolPrueba = new AlfanumericTree();
-        arbolPrueba.insertar(pruebaString, indexNodo);
+        arbolPrueba.insert(pruebaString, indexNodo);
         boolean resultadoEsperado = true;
-        boolean resultadoVerdadero = arbolPrueba.existe(pruebaString);
+        boolean resultadoVerdadero = arbolPrueba.exist(pruebaString);
         assertEquals(resultadoEsperado, resultadoVerdadero);
     }
 
@@ -87,10 +87,10 @@ public class ArbolAlfanumTest {
         String nombrePruebaTres = "Anto";
         String nombrePruebaCuatro = "Pedro";
         AlfanumericTree arbolPrueba = new AlfanumericTree();
-        arbolPrueba.insertar(nombrePruebaUno, 0);
-        arbolPrueba.insertar(nombrePruebaDos,1);
-        arbolPrueba.insertar(nombrePruebaTres, 2);
-        arbolPrueba.insertar(nombrePruebaCuatro, 3);
+        arbolPrueba.insert(nombrePruebaUno, 0);
+        arbolPrueba.insert(nombrePruebaDos,1);
+        arbolPrueba.insert(nombrePruebaTres, 2);
+        arbolPrueba.insert(nombrePruebaCuatro, 3);
         ArrayList<Integer> resultadoEsperado = new ArrayList<Integer>();
         resultadoEsperado.add(4);
         ArrayList<Integer> resultadoVerdadero = arbolPrueba.search(nombrePruebaUno);

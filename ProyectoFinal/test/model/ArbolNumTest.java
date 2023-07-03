@@ -39,9 +39,9 @@ public class ArbolNumTest {
         int numNodo = 27;
         int indexNodo = 1;
         NumericTree arbolPrueba = new NumericTree();
-        arbolPrueba.insertar(numNodo, indexNodo);
+        arbolPrueba.insert(numNodo, indexNodo);
         boolean resultadoEsperado = true;
-        boolean resultadoVerdadero = arbolPrueba.existe(numNodo);
+        boolean resultadoVerdadero = arbolPrueba.exist(numNodo);
         assertEquals(resultadoEsperado, resultadoVerdadero);
     }
 
@@ -53,9 +53,9 @@ public class ArbolNumTest {
         int numNodo = 220;
         int indexNodo = 1;
         NumericTree arbolPrueba = new NumericTree();
-        arbolPrueba.insertar(numNodo, indexNodo);
+        arbolPrueba.insert(numNodo, indexNodo);
         boolean resultadoEsperado = true;
-        boolean resultadoVerdadero = arbolPrueba.existe(numNodo);
+        boolean resultadoVerdadero = arbolPrueba.exist(numNodo);
         assertEquals(resultadoEsperado, resultadoVerdadero);
     }
 
@@ -65,9 +65,9 @@ public class ArbolNumTest {
     public void testEnOrden() {
         System.out.println("enOrden");
         NumericTree arbolPrueba = new NumericTree();
-        arbolPrueba.insertar(11, 0);
-        arbolPrueba.insertar(12, 1);
-        ArrayList<Integer> resultadoVerdadero = arbolPrueba.enOrden();
+        arbolPrueba.insert(11, 0);
+        arbolPrueba.insert(12, 1);
+        ArrayList<Integer> resultadoVerdadero = arbolPrueba.inOrder();
         ArrayList<Integer> resultadoEsperado = new ArrayList<Integer>();
         resultadoEsperado.add(0);
         resultadoEsperado.add(1);

@@ -5,12 +5,7 @@
  */
 package model;
 import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Scanner;
 /**
  *
@@ -18,21 +13,15 @@ import java.util.Scanner;
  */
 public class Graduates {
     
-    private BufferedReader lector;
-    private String line;
-    static String[][] array;
+    static String[][] dataArray;
     
-    public String[][] lector(String nombreA){
-        array = new String[627][3];
+    public String[][] reader(String nameA){
+        dataArray = new String[627][3];
         
         Scanner scan = null;
-        int filC = 0;
-        int fil = 0;
-        int colC = 0;
-        int col = 0;
-        String[] index = new String[627];
+        int row = 0;
         String inputLine = "";
-        String file = nombreA;
+        String file = nameA;
         
         try{
             scan = new Scanner(new BufferedReader(new FileReader(file)));
@@ -42,99 +31,60 @@ public class Graduates {
                 
                 String[] inArray = inputLine.split(",");
                 
-                for(int x=0; x<inArray.length; x++){
-                    array[filC][x] = inArray[x];
+                for(int i=0; i<inArray.length; i++){
+                    dataArray[row][i] = inArray[i];
                 }
-                filC++;
+                row++;
             }
-        return array;
+        return dataArray;
         }catch(Exception e){
             System.out.print(e);
             return null;
         }
     }
     
-    public String[][] getMatriz(){
-        return array;
+    public String[][] getMatrix(){
+        return dataArray;
     }
     
     public int[] getIndex(String[][] array){
-        int[] aux = new int[626];
+        int[] indexArray = new int[626];
+        String[][] dataArray=array;
         
-        for(int i=0; i<array.length-1; i++){
-            aux[i]=Integer.parseInt(String.valueOf(i+1));
+        for(int i=0; i<dataArray.length-1; i++){
+            indexArray[i]=Integer.parseInt(String.valueOf(i+1));
         }
-        return aux;
+        return indexArray;
     }
     
-    public String[] getNombre(String[][] array){
-        String[] aux = new String[626];
+    public String[] getName(String[][] array){
+        String[] nameData = new String[626];
+        String[][] dataArray=array;
         
-        for(int i=0; i<array.length-1; i++){
-            aux[i]=array[i+1][0];
+        for(int i=0; i<dataArray.length-1; i++){
+            nameData[i]=dataArray[i+1][0];
         }
-        return aux;
+        return nameData;
     }
     
-    public String[] getProfesion(String[][] array){
-        String[] aux = new String[626];
+    public String[] getProfession(String[][] array){
+        String[] professionData = new String[626];
+        String[][] dataArray=array;
         
-        for(int i=0; i<array.length-1; i++){
-            aux[i]=array[i+1][1];
+        for(int i=0; i<dataArray.length-1; i++){
+            professionData[i]=dataArray[i+1][1];
         }
-        return aux;
+        return professionData;
     }
     
-    public int[] getPromedio(String[][] array){
-        int[] aux = new int[626];
-        for(int i=0; i<array.length-1; i++){
-            aux[i]= Integer.parseInt(array[i+1][2]);
+    public int[] getAverage(String[][] array){
+        int[] averageData = new int[626];
+        String[][] dataArray=array;
+        
+        for(int i=0; i<dataArray.length-1; i++){
+            averageData[i]= Integer.parseInt(dataArray[i+1][2]);
         }
-        return aux;
-    }
-    
-    public String[] getnombProf(String[][] array){
-        String[] aux = new String[626];
-        for(int i=0; i<array.length-1; i++){
-            aux[i]=array[i+1][0] + array[i+1][1];
-        }
-        return aux;
-    }
-    
-    public String[] getnombProm(String[][] array){
-        String[] aux = new String[626];
-        String aux2;
-        int aux3;
-        for(int i=0; i<array.length-1; i++){
-            aux2 = array[i+1][2];
-            aux3 = Integer.parseInt(aux2);
-            if(aux3<10){
-                aux[i]=array[i+1][0]  + "00" + array[i+1][2];
-            }else if(aux3<100){
-                aux[i]=array[i+1][0]  + "0" + array[i+1][2];
-            }else{
-                aux[i]=array[i+1][0]  + array[i+1][2];
-            }
-        }
-        return aux;
-    }
-    
-    public String[] getprofProm(String[][] array){
-        String[] aux = new String[626];
-        String aux2;
-        int aux3;
-        for(int i=0; i<array.length-1; i++){
-            aux2 = array[i+1][2];
-            aux3 = Integer.parseInt(aux2);
-            if(aux3<10){
-                aux[i]=array[i+1][1]  + "00" + array[i+1][2];
-            }else if(aux3<100){
-                aux[i]=array[i+1][1]  + "0" + array[i+1][2];
-            }else{
-                aux[i]=array[i+1][1]  + array[i+1][2];
-            }
-        }
-        return aux;
-    }
+        return averageData;
+    }    
     
 }

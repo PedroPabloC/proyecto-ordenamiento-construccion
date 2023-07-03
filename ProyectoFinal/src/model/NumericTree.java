@@ -13,146 +13,129 @@ import java.util.ArrayList;
  */
 public class NumericTree {
     
-    private static ArrayList<Integer> arr = new ArrayList<Integer>();
-    private static ArrayList<Integer> s1 = new ArrayList<Integer>();
-   private ArrayList<Integer> s2 = new ArrayList<Integer>();
-    private class nodoArbolNum{
+    private static ArrayList<Integer> orderedResult = new ArrayList<Integer>();
+    private static ArrayList<Integer> treeSearchResult = new ArrayList<Integer>();
+    private ArrayList<Integer> averageResult = new ArrayList<Integer>();
+   
+    private class NumericNode{
         private NumericTree right;
         private NumericTree left;
         private int num;
         private int index;
-        private boolean repetido;
+        private boolean repeated;
         private ArrayList<Integer> nums = new ArrayList<Integer>();
-        private ArrayList<Integer> s1 = new ArrayList<Integer>();
-        
-        private void nodoArbolNum(){
-            right = null;
-            left = null;
-            num = 0;
-            index = 0;
-            nums = null;
-            s1 = null;
-            repetido = false;
-        }
     }
     
-    public nodoArbolNum raiz;
-    
-    public void Arbol(){
-        nodoArbolNum raiz = new nodoArbolNum();
-    }
+    public NumericNode root;    
     
     public boolean empty(){
-        if(raiz==null){
-            return true;
-        }
-        return false;
+        return root==null;
     }
     
-    public void insertar(int a, int ind){
+    public void insert(int a, int ind){
         if(empty()){
-            nodoArbolNum nuevo = new nodoArbolNum();
+            NumericNode nuevo = new NumericNode();
             nuevo.num = a;
             nuevo.index = ind;
             nuevo.right = new NumericTree();
             nuevo.left = new NumericTree();
-            raiz = nuevo;
+            root = nuevo;
         }else{
-            if(a>raiz.num){
-                (raiz.right).insertar(a,ind);
+            if(a>root.num){
+                (root.right).insert(a,ind);
             }
-            if(a==raiz.num){
-                raiz.repetido = true;
-                raiz.nums.add(ind);
+            if(a==root.num){
+                root.repeated = true;
+                root.nums.add(ind);
             }
-            if(a<raiz.num){
-                (raiz.left).insertar(a, ind);
+            if(a<root.num){
+                (root.left).insert(a, ind);
             }
         }
     }
     
-    public boolean existe(int a){
+    public boolean exist(int a){
         if(!empty()){
-            if(raiz.num==a){
+            if(root.num==a){
                 return true;
             }else{
-                raiz.left.search(a);
-                raiz.right.search(a);
+                root.left.search(a);
+                root.right.search(a);
             }
         }
         return false;
     }
     
-    public ArrayList<Integer> enOrden(){
+    public ArrayList<Integer> inOrder(){
         if(!empty()){
-            raiz.left.enOrden();
-            if(raiz.repetido==true){
-                for(int i=0; i<raiz.nums.size(); i++){
-                    arr.add(raiz.nums.get(i));
+            root.left.inOrder();
+            if(root.repeated==true){
+                for(int i=0; i<root.nums.size(); i++){
+                    orderedResult.add(root.nums.get(i));
                 }
             }else{
-                arr.add(raiz.index);
+                orderedResult.add(root.index);
             }
-            raiz.right.enOrden();
+            root.right.inOrder();
         }
-        return arr;
+        return orderedResult;
     }    
     
     public ArrayList<Integer> search(int a){
         if(!empty()){
-            if(raiz.num==a){
-                if(raiz.repetido==true){
-                    for(int i=0; i<raiz.nums.size();i++){
-                        s1.add(raiz.nums.get(i));
+            if(root.num==a){
+                if(root.repeated==true){
+                    for(int i=0; i<root.nums.size();i++){
+                        treeSearchResult.add(root.nums.get(i));
                     }
                 }
             }else{
-                raiz.left.search(a);
-                raiz.right.search(a);
+                root.left.search(a);
+                root.right.search(a);
             }
         }                
-        return s1;
+        return treeSearchResult;
     }
     
     public ArrayList<Integer> search(int a,int b,int simbolo,String[][] matriz,ArrayList<Integer> a3){
-        s1.clear();
-        s2.clear();
+        treeSearchResult.clear();
+        averageResult.clear();
         switch(simbolo) {
             case 0:
                 System.out.println("caso0");
                 for(int i=0;i<626;i++){
                     if(Integer.parseInt(matriz[a3.get(i)][2])<=a){
-                        s2.add(a3.get(i));
+                        averageResult.add(a3.get(i));
                     }else{
                         break;
                     }
                 }
-                return s2;
+                return averageResult;
             case 1:   
                 System.out.println("caso1");
                 for(int i=584;i>-1;i--){
                     if(Integer.parseInt(matriz[a3.get(i)][2])>=a){
-                        s2.add(a3.get(i));
+                        averageResult.add(a3.get(i));
                     }else{
                         break;
                     }
                 }
-                return s2;                
+                return averageResult;                
             case 2:
                 System.out.println("case2");                
                 for(int i=0;i<584;i++){
                     if(Integer.parseInt(matriz[a3.get(i)][2])==a){
-                        s2.add(a3.get(i));
+                        averageResult.add(a3.get(i));
                     }
                 }
-                return s2;
+                return averageResult;
             case 3:  
                 System.out.println("case3");
                 ArrayList<Integer> s3 = new ArrayList<Integer>();
                 
                 for(int i=0;i<626;i++){
                     if(Integer.parseInt(matriz[a3.get(i)][2])<=b){
-                        s2.add(a3.get(i));
+                        averageResult.add(a3.get(i));
                     }else{
                         break;
                     }
@@ -160,22 +143,22 @@ public class NumericTree {
 
                 for(int i=584;i>-1;i--){
                     if(Integer.parseInt(matriz[a3.get(i)][2])>=a){
-                        s1.add(a3.get(i));
+                        treeSearchResult.add(a3.get(i));
                     }else{
                         break;
                     }
                 }
                 
-                for(int i=0;i<s2.size();i++){
-                    for(int j=0;j<s1.size();j++){
-                        if(s2.get(i)==s1.get(j)){
-                            s3.add(s2.get(i));
+                for(int i=0;i<averageResult.size();i++){
+                    for(int j=0;j<treeSearchResult.size();j++){
+                        if(averageResult.get(i)==treeSearchResult.get(j)){
+                            s3.add(averageResult.get(i));
                         }
                     }                    
                 }
                 return s3;
             default:
-              return s2;
+              return averageResult;
         }
     }
 
