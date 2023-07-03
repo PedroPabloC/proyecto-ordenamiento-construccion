@@ -11,15 +11,15 @@ import java.util.ArrayList;
  *
  * @author Albert
  */
-public class ArbolAlfanum {
+public class AlfanumericTree {
     
     private static ArrayList<Integer> arr = new ArrayList<Integer>();
     private static ArrayList<Integer> s1 = new ArrayList<Integer>();
     private static ArrayList<Integer> s2 = new ArrayList<Integer>();
    
     private class nodoArbolAlfanum{
-        private ArbolAlfanum right;
-        private ArbolAlfanum left;
+        private AlfanumericTree right;
+        private AlfanumericTree left;
         private String dato;
         private int index;
         private boolean repetido;
@@ -50,8 +50,8 @@ public class ArbolAlfanum {
             nodoArbolAlfanum nuevo = new nodoArbolAlfanum();
             nuevo.dato = a;
             nuevo.index = ind;
-            nuevo.right = new ArbolAlfanum();
-            nuevo.left = new ArbolAlfanum();
+            nuevo.right = new AlfanumericTree();
+            nuevo.left = new AlfanumericTree();
             raiz = nuevo;
         }else{
             int cmp = raiz.dato.compareTo(a);

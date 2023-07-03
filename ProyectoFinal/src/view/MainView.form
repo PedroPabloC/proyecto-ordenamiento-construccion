@@ -48,8 +48,8 @@
                       <Group type="102" alignment="1" attributes="0">
                           <EmptySpace min="-2" pref="88" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="1" attributes="0">
-                              <Component id="filNomb" min="-2" max="-2" attributes="0"/>
-                              <Component id="Search" min="-2" max="-2" attributes="0"/>
+                              <Component id="BfilterByName" min="-2" max="-2" attributes="0"/>
+                              <Component id="Bsearch" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="1" attributes="0">
@@ -64,14 +64,14 @@
                   </Group>
                   <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="1" attributes="0">
-                      <Component id="searchNom" alignment="1" min="-2" pref="211" max="-2" attributes="0"/>
-                      <Component id="searchProf" alignment="1" min="-2" pref="211" max="-2" attributes="0"/>
+                      <Component id="FsearchName" alignment="1" min="-2" pref="211" max="-2" attributes="0"/>
+                      <Component id="FsearchProfession" alignment="1" min="-2" pref="211" max="-2" attributes="0"/>
                       <Group type="102" alignment="1" attributes="0">
-                          <Component id="searchProm" min="-2" pref="83" max="-2" attributes="0"/>
+                          <Component id="FsearchAverage1" min="-2" pref="83" max="-2" attributes="0"/>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Component id="CBrangos" min="-2" max="-2" attributes="0"/>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Component id="searchProm2" min="-2" pref="83" max="-2" attributes="0"/>
+                          <Component id="FsearchAverage2" min="-2" pref="83" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace max="32767" attributes="0"/>
@@ -91,38 +91,35 @@
                   <Group type="103" groupAlignment="1" attributes="0">
                       <Group type="102" alignment="1" attributes="0">
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Component id="filNomb" min="-2" max="-2" attributes="0"/>
+                          <Component id="BfilterByName" min="-2" max="-2" attributes="0"/>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="Search" min="-2" max="-2" attributes="0"/>
+                          <Component id="Bsearch" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="32767" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="1" attributes="0">
                           <EmptySpace pref="13" max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="searchNom" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="FsearchName" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="label1" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="searchProf" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="FsearchProfession" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="label2" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" attributes="0">
-                                  <Component id="label3" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace max="32767" attributes="0"/>
-                              </Group>
+                              <Component id="label3" min="-2" max="-2" attributes="0"/>
                               <Group type="102" attributes="0">
                                   <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="3" attributes="0">
                                       <Component id="CBrangos" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="searchProm2" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="searchProm" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="FsearchAverage2" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="FsearchAverage1" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
-                                  <EmptySpace pref="42" max="32767" attributes="0"/>
                               </Group>
                           </Group>
+                          <EmptySpace max="32767" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
@@ -151,17 +148,17 @@
             </Component>
           </SubComponents>
         </Container>
-        <Component class="javax.swing.JButton" name="filNomb">
+        <Component class="javax.swing.JButton" name="BfilterByName">
           <Properties>
             <Property name="text" type="java.lang.String" value="jButton1"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="searchProf">
+        <Component class="javax.swing.JTextField" name="FsearchProfession">
           <Properties>
             <Property name="text" type="java.lang.String" value="jTextField1"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="searchNom">
+        <Component class="javax.swing.JTextField" name="FsearchName">
           <Properties>
             <Property name="text" type="java.lang.String" value="jTextField2"/>
           </Properties>
@@ -181,12 +178,12 @@
             <Property name="text" type="java.lang.String" value="jLabel3"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JButton" name="Search">
+        <Component class="javax.swing.JButton" name="Bsearch">
           <Properties>
             <Property name="text" type="java.lang.String" value="Search"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="searchProm">
+        <Component class="javax.swing.JTextField" name="FsearchAverage1">
         </Component>
         <Component class="javax.swing.JComboBox" name="CBrangos">
           <Properties>
@@ -203,7 +200,7 @@
             <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
           </AuxValues>
         </Component>
-        <Component class="javax.swing.JTextField" name="searchProm2">
+        <Component class="javax.swing.JTextField" name="FsearchAverage2">
         </Component>
       </SubComponents>
     </Container>

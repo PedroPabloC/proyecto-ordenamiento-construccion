@@ -24,7 +24,7 @@ public class ArbolAlfanumTest {
     @Test
     public void testEmpty() {
         System.out.println("empty");
-        ArbolAlfanum arbolPrueba = new ArbolAlfanum();
+        AlfanumericTree arbolPrueba = new AlfanumericTree();
         boolean resultadoEsperado = true;
         boolean resultadoVerdadero = arbolPrueba.empty();
         assertEquals(resultadoEsperado, resultadoVerdadero);
@@ -38,7 +38,7 @@ public class ArbolAlfanumTest {
         System.out.println("insertar");
         String pruebaString = "example";
         int indexNodo = 1;
-        ArbolAlfanum arbolPrueba = new ArbolAlfanum();
+        AlfanumericTree arbolPrueba = new AlfanumericTree();
         arbolPrueba.insertar(pruebaString, indexNodo);
         boolean resultadoEsperado = true;
         boolean resultadoVerdadero = arbolPrueba.existe(pruebaString);
@@ -51,7 +51,7 @@ public class ArbolAlfanumTest {
     @Test
     public void testEnOrden() {
         System.out.println("enOrden");
-        ArbolAlfanum arbolPrueba = new ArbolAlfanum();
+        AlfanumericTree arbolPrueba = new AlfanumericTree();
         arbolPrueba.insertar("example1", 0);
         arbolPrueba.insertar("example2", 1);
         ArrayList<Integer> resultadoVerdadero = arbolPrueba.enOrden();
@@ -69,7 +69,7 @@ public class ArbolAlfanumTest {
         System.out.println("existe");
         String pruebaString = "example";
         int indexNodo = 1;
-        ArbolAlfanum arbolPrueba = new ArbolAlfanum();
+        AlfanumericTree arbolPrueba = new AlfanumericTree();
         arbolPrueba.insertar(pruebaString, indexNodo);
         boolean resultadoEsperado = true;
         boolean resultadoVerdadero = arbolPrueba.existe(pruebaString);
@@ -86,7 +86,7 @@ public class ArbolAlfanumTest {
         String nombrePruebaDos = "Carlos";
         String nombrePruebaTres = "Anto";
         String nombrePruebaCuatro = "Pedro";
-        ArbolAlfanum arbolPrueba = new ArbolAlfanum();
+        AlfanumericTree arbolPrueba = new AlfanumericTree();
         arbolPrueba.insertar(nombrePruebaUno, 0);
         arbolPrueba.insertar(nombrePruebaDos,1);
         arbolPrueba.insertar(nombrePruebaTres, 2);

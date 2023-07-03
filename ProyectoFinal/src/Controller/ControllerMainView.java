@@ -7,15 +7,12 @@ package Controller;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
-import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
-import model.ArbolAlfanum;
-import model.ArbolNum;
-import vista.mainView;
+import model.AlfanumericTree;
+import model.NumericTree;
+import view.MainView;
 
 
 /**
@@ -23,196 +20,204 @@ import vista.mainView;
  * @author a14004103
  */
 public class ControllerMainView implements ActionListener{
-    mainView view;
+    MainView view;
     
-    private String[][] matriz = new String[626][3];    
+    private String[][] dataMatrix = new String[626][3];    
     DefaultTableModel mT = new DefaultTableModel();
-    private ArrayList<Integer> a1 = new ArrayList<Integer>();
-    private ArrayList<Integer> a2 = new ArrayList<Integer>();
-    private ArrayList<Integer> a3 = new ArrayList<Integer>();
-    private ArbolNum treeNum = new ArbolNum();
-    private ArbolAlfanum treeAlf1 = new ArbolAlfanum();
-    private ArbolAlfanum treeAlf2 = new ArbolAlfanum();
-    private ArbolAlfanum treeAlf3 = new ArbolAlfanum();
-    private ArbolAlfanum treeAlf4 = new ArbolAlfanum();
+    private ArrayList<Integer> nameIndex = new ArrayList<Integer>();
+    private ArrayList<Integer> averageIndex = new ArrayList<Integer>();
+    private NumericTree averageTree = new NumericTree();
+    private AlfanumericTree professionTree = new AlfanumericTree();
 
     
-        public void setModel(){
+    public void setModel(){
         String[] header1 ={"Nombre", "Profesion", "Promedio"};
         mT.setColumnIdentifiers(header1);
-        JTable lista=view.getLista();
-        lista.setModel(mT);
-        view.setLista(lista);
+        JTable list=view.getList();
+        list.setModel(mT);
+        view.setList(list);
     }
     
-    public void setRows(String[][] m, ArrayList<Integer> ind){
+    public void setRows(String[][] dataMatrix, ArrayList<Integer> finalResult){
         clearTable();
-        mT.setRowCount(ind.size());
+        
+        String[][] data=dataMatrix;
+        ArrayList<Integer> result=finalResult;
+        
+        mT.setRowCount(result.size());
         mT.setColumnCount(3);
         
-        for(int i=0; i<ind.size(); i++){
+        for(int i=0; i<result.size(); i++){
             for(int j=0; j<3; j++){
-                mT.setValueAt(m[ind.get(i)][j], i, j);
+                mT.setValueAt(data[result.get(i)][j], i, j);
             }
         }
     }
     
     public void clearTable(){
         setModel();
-            int filas=mT.getRowCount();
-            for (int i = 0;filas>i; i++) {
+            int rows=mT.getRowCount();
+            for (int i = 0;rows>i; i++) {
                 mT.removeRow(0);
             }
     }
     
-    public ControllerMainView(mainView view){
+    public ControllerMainView(MainView view){
         this.view=view;
-        this.view.getFilNomb().addActionListener(this);
-        this.view.getSearch().addActionListener(this);        
+        this.view.getBfilterByName().addActionListener(this);
+        this.view.getBsearch().addActionListener(this);        
         this.setModel();
     }
     @Override
     public void actionPerformed(ActionEvent e) {
         
-        if(view.getSearch()==e.getSource()){
+        if(view.getBsearch()==e.getSource()){
             search();
         }
         
-        if(view.getFilNomb()==e.getSource()){
-            setRows(matriz, a1);
+        if(view.getBfilterByName()==e.getSource()){
+            setRows(dataMatrix, nameIndex);
         }
     }
     
-    public ArrayList<Integer> searchProm(ArbolNum t, int prom,int prom2,int simbolo){
-        ArrayList<Integer> aux = new ArrayList<Integer>();
-        ArrayList<Integer> aux2 = new ArrayList<Integer>();
-        aux = t.enOrden();
-        aux2 = t.search(prom,prom2,simbolo,matriz,a3);
+    public ArrayList<Integer> searchAverage(NumericTree averageTree, int average1,int average2,int simbolo){
+        ArrayList<Integer> temporalAverageList = new ArrayList<Integer>();
+        ArrayList<Integer> averageSearchResult = new ArrayList<Integer>();
+        temporalAverageList = averageTree.enOrden();
+        averageSearchResult = averageTree.search(average1,average2,simbolo,dataMatrix,averageIndex);
         
-        return aux2;
+        return averageSearchResult;
     }
     
-    public ArrayList<Integer> searchProf(ArbolAlfanum t, String prof){
-        ArrayList<Integer> aux = new ArrayList<Integer>();
-        ArrayList<Integer> aux2 = new ArrayList<Integer>();
-        aux2 = t.search(prof);
-        return aux2;
+    public ArrayList<Integer> searchProfession(AlfanumericTree professionTree, String profession){
+        ArrayList<Integer> professionSearchResult = new ArrayList<Integer>();
+        professionSearchResult = professionTree.search(profession);
+        return professionSearchResult;
     }
     
-    public ArrayList<Integer> searchNom(ArbolAlfanum t, String nom){
-        ArrayList<Integer> aux2 = new ArrayList<Integer>();
-        aux2.clear();
-        aux2 = t.searchSequence(matriz, nom);
-        return aux2;
+    public ArrayList<Integer> searchName(AlfanumericTree professionTree, String name){
+        ArrayList<Integer> nameSearchResult = new ArrayList<Integer>();
+        nameSearchResult.clear();
+        nameSearchResult = professionTree.searchSequence(dataMatrix, name);
+        return nameSearchResult;
     }
     
+    private ArrayList<Integer> JointSearch2Param(ArrayList<Integer> finalResult,ArrayList<Integer> professionResult){
+        
+        ArrayList<Integer> result = new ArrayList<Integer>();
+        ArrayList<Integer> nameList = new ArrayList<Integer>();
+        ArrayList<Integer> professionList = new ArrayList<Integer>();
+        
+        nameList=finalResult;
+        professionList=professionResult;
+        
+        for(int i=0;i<nameList.size();i++){
+            for(int j=0;j<professionList.size();j++){
+                if(nameList.get(i).equals(professionList.get(j))){
+                    result.add(nameList.get(i));
+                }
+            }
+        }        
+        return result;
+    }
+    private ArrayList<Integer> JointSearch4Param(ArrayList<Integer> finalResult,ArrayList<Integer> averageResult){
+        
+        ArrayList<Integer> result = new ArrayList<Integer>();
+        ArrayList<Integer> result2ParamList = new ArrayList<Integer>();
+        ArrayList<Integer> averageList = new ArrayList<Integer>();
+        
+        result2ParamList=finalResult;
+        averageList=averageResult;
+        
+        for(int i=0;i<result2ParamList.size();i++){
+            for(int j=0;j<averageList.size();j++){
+                if(result2ParamList.get(i).equals(averageList.get(j))){
+                    result.add(result2ParamList.get(i));
+                }
+            }
+        }
+                                
+        return result;
+    }
     public void search(){
-        String promedio=view.getSearchProm().getText();
-        String promedio2=view.getSearchProm2().getText();
-        String profesion= view.getSearchProf().getText();
-        String nombre=view.getSearchNom().getText();
-        int simbolo=view.getCBrangos();
-        ArrayList<Integer> a4 = new ArrayList<Integer>();
-        ArrayList<Integer> a5 = new ArrayList<Integer>();
-        ArrayList<Integer> a6 = new ArrayList<Integer>();
-        ArrayList<Integer> a7 = new ArrayList<Integer>();
-        ArrayList<Integer> a8 = new ArrayList<Integer>();
-        if(nombre.compareTo("")!=0){                        
-            a4.clear();
-            a4 = searchNom(treeAlf1, nombre);
-            if(a4.size()==0){
+        String average1=view.getFsearchAverage1().getText();
+        String average2=view.getFsearchAverage2().getText();
+        String profession= view.getFsearchProfession().getText();
+        String name=view.getFsearchName().getText();
+        int symbol=view.getCBrangos();
+        ArrayList<Integer> finalResult = new ArrayList<Integer>();
+        ArrayList<Integer> professionResult = new ArrayList<Integer>();
+        ArrayList<Integer> averageResult = new ArrayList<Integer>();
+        if(name.compareTo("")!=0){                        
+
+            finalResult = searchName(professionTree, name);
+            if(finalResult.size()==0){
                     JOptionPane.showMessageDialog(null, "NO ESXTTEN COINCIDENCIAS DE REGISTRO, INTENTELOS NUEVAMENTE");
             }           
         }
-        if(profesion.compareTo("")!=0){
-            if(profesion.length()<=5){
+        if(profession.compareTo("")!=0){
+            if(profession.length()<=5){
                 JOptionPane.showMessageDialog(null, "LA PROFESION BUSCADA NO SE ENCUENTRA, PORFAVOR INTENTE OTRA O ESCRIBA NUEVAMENTE SU BUSQUEDA");
             }else{                        
-                a5 = searchProf(treeAlf1, profesion);
-                if(a4.size()==0){
-                    a4=a5;                                                        
+                professionResult = searchProfession(professionTree, profession);
+                if(finalResult.size()==0){
+                    finalResult=professionResult;                                                        
                 }else{                                                        
-                    for(int i=0;i<a4.size();i++){
-                        for(int j=0;j<a5.size();j++){
-                            if(a4.get(i).equals(a5.get(j))){
-                                a6.add(a4.get(i));
-                            }
-                        }
-                    }
-                    a4=a6;
+                    finalResult=JointSearch2Param(finalResult,professionResult);
+
                 }
-                if(a4.size()==0){
-                        JOptionPane.showMessageDialog(null, "NO ESXTTEN COINCIDENCIAS DE REGISTRO, INTENTELOS NUEVAMENTE");
+                if(finalResult.size()==0){
+                        JOptionPane.showMessageDialog(null, "LA PROFESION BUSCADA NO SE ENCUENTRA");
                 }
 
             }            
         }
-        if(promedio.compareTo("")!=0){                        
-            int aux = Integer.parseInt(promedio);
-            if(aux<60 || aux>100){
+        if(average1.compareTo("")!=0){                        
+            int numericAverage = Integer.parseInt(average1);
+            if(numericAverage<60 || numericAverage>100){
                 JOptionPane.showMessageDialog(null, "NO EXISTEN REGISTROS CON ESE PROMEDIO");
             }
             else{
-                if(simbolo!=3){
-                    a8 = searchProm(treeNum, aux, 0, simbolo);
+                if(symbol!=3){
+                    averageResult = searchAverage(averageTree, numericAverage, 0, symbol);
                     
-                    if(a4.isEmpty()){
-                        a4=a8;                                                        
+                    if(finalResult.isEmpty()){
+                        finalResult=averageResult;                                                        
                     }else{                                                        
-                        for(int i=0;i<a4.size();i++){
-                            for(int j=0;j<a8.size();j++){
-                                if(a4.get(i).equals(a8.get(j))){
-                                    a7.add(a4.get(i));
-                                }
-                            }
-                        }
-                        a4=a7;
+                        finalResult=JointSearch4Param(finalResult,averageResult);
                     }
-                }else if(promedio2.compareTo("")==0&&simbolo==3){
+                }else if(average2.compareTo("")==0&&symbol==3){
                     JOptionPane.showMessageDialog(null, "Escribe un numero valido en el segundo promedio");
                 }
                 else{
-                    a8 = searchProm(treeNum, aux, Integer.parseInt(promedio2), simbolo);                 
+                    averageResult = searchAverage(averageTree, numericAverage, Integer.parseInt(average2), symbol);                 
                     
-                    if(a4.isEmpty()){
-                        a4=a8;                                                        
+                    if(finalResult.isEmpty()){
+                        finalResult=averageResult;                                                        
                     }else{                                                        
-                        for(int i=0;i<a4.size();i++){
-                            for(int j=0;j<a8.size();j++){
-                                if(a4.get(i).equals(a8.get(j))){
-                                    a7.add(a4.get(i));
-                                }
-                            }
-                        }
-                        a4=a7;
+                        finalResult=JointSearch4Param(finalResult,averageResult);
                     }
                 }
                 
             }
         }
         
-        setRows(matriz, a4);
-        view.setSearchNom("");
-        view.setSearchProf("");
-        view.setSearchProm("");
-        view.setSearchProm2("");
-        a4.clear();  
-        a5.clear();
-        a6.clear();   
-        a7.clear();
-        a8.clear();
+        setRows(dataMatrix, finalResult);
+        view.setFsearchName("");
+        view.setFsearchProfession("");
+        view.setFsearchAverage1("");
+        view.setFsearchAverage2("");
+        finalResult.clear();  
+        professionResult.clear();
+        averageResult.clear();
     }
   
-    public void setData(String[][] m, ArrayList<Integer> i1, ArrayList<Integer> i2, ArrayList<Integer> i3, ArbolNum t1, ArbolAlfanum t2, ArbolAlfanum t3, ArbolAlfanum t4, ArbolAlfanum t5){
-        matriz = m;
-        a1 = i1;
-        a2 = i2;
-        a3 = i3;
-        treeNum = t1;
-        treeAlf1 = t2;
-        treeAlf2 = t3;
-        treeAlf3 = t4;
-        treeAlf4 = t5;
+    public void setData(String[][] dataMatrix, ArrayList<Integer> nameIndex, ArrayList<Integer> averageIndex, NumericTree averageTree, AlfanumericTree professionTree){
+        this.dataMatrix = dataMatrix;
+        this.nameIndex = nameIndex;
+        this.averageIndex = averageIndex;
+        this.averageTree = averageTree;
+        this.professionTree = professionTree;
     }
     
 }

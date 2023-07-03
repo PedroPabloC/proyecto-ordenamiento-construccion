@@ -16,7 +16,7 @@ import java.util.Scanner;
  *
  * @author Albert
  */
-public class Egresados {
+public class Graduates {
     
     private BufferedReader lector;
     private String line;

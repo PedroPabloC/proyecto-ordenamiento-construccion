@@ -11,14 +11,14 @@ import java.util.ArrayList;
  *
  * @author Albert
  */
-public class ArbolNum {
+public class NumericTree {
     
     private static ArrayList<Integer> arr = new ArrayList<Integer>();
     private static ArrayList<Integer> s1 = new ArrayList<Integer>();
    private ArrayList<Integer> s2 = new ArrayList<Integer>();
     private class nodoArbolNum{
-        private ArbolNum right;
-        private ArbolNum left;
+        private NumericTree right;
+        private NumericTree left;
         private int num;
         private int index;
         private boolean repetido;
@@ -54,8 +54,8 @@ public class ArbolNum {
             nodoArbolNum nuevo = new nodoArbolNum();
             nuevo.num = a;
             nuevo.index = ind;
-            nuevo.right = new ArbolNum();
-            nuevo.left = new ArbolNum();
+            nuevo.right = new NumericTree();
+            nuevo.left = new NumericTree();
             raiz = nuevo;
         }else{
             if(a>raiz.num){
