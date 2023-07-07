@@ -29,10 +29,22 @@ public class NumericTree {
     
     public NumericNode root;    
     
+    /**
+     *Determina si el nodo del arbol esta vacio.
+     * @return
+     * Retorna un booleano true si esta vacio y false si no esta vacio.
+     */
     public boolean empty(){
         return root==null;
     }
     
+    /**
+     *Incerta un nuevo dato en el arbol
+     * @param a
+     * Recibe el dato a insertar
+     * @param ind
+     * Recibe la posicion del dato a insertar
+     */
     public void insert(int a, int ind){
         if(empty()){
             NumericNode nuevo = new NumericNode();
@@ -55,6 +67,13 @@ public class NumericTree {
         }
     }
     
+    /**
+     *Determina si existe cierto nodo.
+     * @param a
+     * Recibe el dato del nodo a comprobar.
+     * @return
+     * Retorna un booleano true si existe y false si no existe.
+     */
     public boolean exist(int a){
         if(!empty()){
             if(root.num==a){
@@ -67,6 +86,12 @@ public class NumericTree {
         return false;
     }
     
+    /**
+     *Ordena las posiciones de los datos del arreglo por promedio.
+     * @return
+     * Regresa un vector con las posiciones de los datos del arreglo ordenadas 
+     * por promedio.
+     */
     public ArrayList<Integer> inOrder(){
         if(!empty()){
             root.left.inOrder();
@@ -82,6 +107,14 @@ public class NumericTree {
         return orderedResult;
     }    
     
+    /**
+     *Busca en el arbol numerico coincidencias con el parametro recibido.
+     * @param a
+     * Recibe un entero a buscar en el arbol numerico.
+     * @return
+     * Regresa un vector con las posiciones de los datos de las coincidencias 
+     * con el parametro recibido.
+     */
     public ArrayList<Integer> search(int a){
         if(!empty()){
             if(root.num==a){
@@ -98,6 +131,24 @@ public class NumericTree {
         return treeSearchResult;
     }
     
+    /**
+     *Busca en el arbol numerico coincidencias con 2 parametros int recibidos.
+     * @param a
+     * Recibe un parametro tipo int que se buscara en el arbol.
+     * @param b
+     * Recibe un parametro tipo int que se buscara en el arbol.
+     * @param simbolo
+     * Recibe un parametro tipo int representando el tipo de coincidencia que se
+     * quiere evaluar.
+     * @param matriz
+     * Recibe un arreglo con todos los datos.
+     * @param a3
+     * Recibe un vector con los resultados de coincidencias de otras busquedas,
+     * si no hay otras busquedas el vector esta vacio.
+     * @return
+     * Regresa un vector con las posiciones de los datos de las coincidencias 
+     * con el parametro recibido.
+     */
     public ArrayList<Integer> search(int a,int b,int simbolo,String[][] matriz,ArrayList<Integer> a3){
         treeSearchResult.clear();
         averageResult.clear();

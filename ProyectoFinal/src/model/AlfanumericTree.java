@@ -29,10 +29,22 @@ public class AlfanumericTree {
     
     public AlfanumericNode root;
     
+    /**
+     *Determina si el nodo del arbol esta vacio.
+     * @return
+     * Retorna un booleano true si esta vacio y false si no esta vacio.
+     */
     public boolean empty(){
         return root==null;
     }
     
+    /**
+     *Incerta un nuevo dato en el arbol
+     * @param a
+     * Recibe el dato a insertar
+     * @param ind
+     * Recibe la posicion del dato a insertar
+     */
     public void insert(String a, int ind){
         if(empty()){
             AlfanumericNode newNode = new AlfanumericNode();
@@ -56,6 +68,13 @@ public class AlfanumericTree {
         }
     }
     
+    /**
+     *Determina si existe cierto nodo.
+     * @param a
+     * Recibe el dato del nodo a comprobar.
+     * @return
+     * Retorna un booleano true si existe y false si no existe.
+     */
     public boolean exist(String a){
         boolean exist = false;
         if(!empty()){
@@ -72,6 +91,10 @@ public class AlfanumericTree {
         return exist;
     }    
     
+    /**
+     *Ordena las posiciones de los datos del arreglo por profesion.
+     * @return
+     */
     public ArrayList<Integer> inOrder(){
         if(!empty()){
             root.right.inOrder();
@@ -87,6 +110,14 @@ public class AlfanumericTree {
         return orderedResult;        
     }    
     
+    /**
+     *Busca en el arbol alfanumerico coincidencias con el parametro recibido.
+     * @param a
+     * Recibe una cadena a buscar en el arbol alfanumerico.
+     * @return
+     * Regresa un vector con las posiciones de los datos de las coincidencias 
+     * con el parametro recibido.
+     */
     public ArrayList<Integer> search(String a){
         if(!empty()){
             int cmp = root.dato.compareTo(a);
@@ -107,6 +138,16 @@ public class AlfanumericTree {
         return result;
     }
     
+    /**
+     *Busqueda por letra de nombres en los datos del documento leido.
+     * @param arreglo
+     * Recibe un arreglo con todos los datos del documento.
+     * @param a
+     * Recibe una cadena con la letra a buscar.
+     * @return
+     * Regresa un vector con las posiciones de los datos de las coincidencias 
+     * con el parametro recibido.
+     */
     public ArrayList<Integer> searchNameString(String[][] arreglo,String a){
         nameResult.clear();
         if(a.length()>1){

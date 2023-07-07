@@ -29,7 +29,7 @@ public class ControllerMainView implements ActionListener{
     private NumericTree averageTree = new NumericTree();
     private AlfanumericTree professionTree = new AlfanumericTree();
 
-    
+
     public void setModel(){
         String[] header1 ={"Nombre", "Profesion", "Promedio"};
         mT.setColumnIdentifiers(header1);
@@ -38,6 +38,14 @@ public class ControllerMainView implements ActionListener{
         view.setList(list);
     }
     
+    /**
+     *
+     * Crea y llena filas de una tabla con los datos seleccionados.
+     * @param dataMatrix
+     * Matriz con toda la informacion del documento leido.
+     * @param finalResult
+     * Vector con las filas que coinciden con los requisitos de la busqueda.
+     */
     public void setRows(String[][] dataMatrix, ArrayList<Integer> finalResult){
         clearTable();
         
@@ -53,7 +61,10 @@ public class ControllerMainView implements ActionListener{
             }
         }
     }
-    
+
+    /**
+     *Remueve los datos de una tabla
+     */
     public void clearTable(){
         setModel();
             int rows=mT.getRowCount();
@@ -62,12 +73,22 @@ public class ControllerMainView implements ActionListener{
             }
     }
     
+    /** 
+     *Recibe un objeto MainView y lo personaliza aplicando funcionalidad.
+     * @param view
+     * Recibe un objeto MainView.
+     */
     public ControllerMainView(MainView view){
         this.view=view;
         this.view.getBfilterByName().addActionListener(this);
         this.view.getBsearch().addActionListener(this);        
         this.setModel();
     }
+
+    /**
+     *Detecta cual de los botones ha sido presionado a partir de un listener.
+     * @param e
+     */
     @Override
     public void actionPerformed(ActionEvent e) {
         
@@ -80,6 +101,22 @@ public class ControllerMainView implements ActionListener{
         }
     }
     
+    /**
+     *Busca coincidencias definidas por un simbolo entre una lista de datos y
+     * 1 o 2 parametros. Si solo un parametro es introducido el segundo parame
+     * tro es 0.
+     * @param averageTree
+     * Recibe un arbol con los datos ordenados por promedio.
+     * @param average1
+     * Recibe el primer parametro a comparar.
+     * @param average2
+     * Recibe el segundo parametro a comparar.
+     * @param simbolo
+     * Recibe un entero representando una de 4 condiciones para declarar coinci-
+     * dencia entre parametros y datos.
+     * @return
+     * Retorna un vector con las posiciones en tabla de todas las coincidencias.
+     */
     public ArrayList<Integer> searchAverage(NumericTree averageTree, int average1,int average2,int simbolo){
         ArrayList<Integer> temporalAverageList = new ArrayList<Integer>();
         ArrayList<Integer> averageSearchResult = new ArrayList<Integer>();
@@ -89,12 +126,32 @@ public class ControllerMainView implements ActionListener{
         return averageSearchResult;
     }
     
+    /**
+     *Busca coincidencias entre la profesion introducida y las profesiones en el
+     * arbol de datos.
+     * @param professionTree
+     * Recibe un arbol con los datos ordenados por profesion.
+     * @param profession
+     * Recibe el parametro con una profesion a comparar.
+     * @return
+     * Retorna un vector con las posiciones en tabla de todas las coincidencias.
+     */
     public ArrayList<Integer> searchProfession(AlfanumericTree professionTree, String profession){
         ArrayList<Integer> professionSearchResult = new ArrayList<Integer>();
         professionSearchResult = professionTree.search(profession);
         return professionSearchResult;
     }
     
+    /**
+     *Busca coincidencias entre el nombre o letra introducidas y la primera 
+     * letra o los nombres en el arreglo de datos y los ordena por profesion.
+     * @param professionTree
+     * Recibe un arbol con los datos ordenados por profesion.
+     * @param name
+     * Recibe el parametro con un nombre o letra a comparar.
+     * @return
+     * Retorna un vector con las posiciones en tabla de todas las coincidencias.
+     */
     public ArrayList<Integer> searchName(AlfanumericTree professionTree, String name){
         ArrayList<Integer> nameSearchResult = new ArrayList<Integer>();
         nameSearchResult.clear();
@@ -102,6 +159,16 @@ public class ControllerMainView implements ActionListener{
         return nameSearchResult;
     }
     
+    /**
+     * Busca coincidencias en los datos con dos parametros como condicionales.
+     * @param finalResult
+     * Recibe un vector con las coincidencias de la primera busqueda.
+     * @param professionResult
+     * Recibe un vector con las coincidencias de la segunda busqueda.
+     * @return 
+     * Retorna un vector con las posiciones en tabla de la interseccion de resul
+     * tados.
+     */
     private ArrayList<Integer> JointSearch2Param(ArrayList<Integer> finalResult,ArrayList<Integer> professionResult){
         
         ArrayList<Integer> result = new ArrayList<Integer>();
@@ -120,6 +187,18 @@ public class ControllerMainView implements ActionListener{
         }        
         return result;
     }
+    
+    /**
+     * Busca coincidencias en los datos con cuatro parametros como condicionales.
+     * @param finalResult
+     * Recibe un vector con las coincidencias de la primera busqueda.
+     * @param averageResult
+     * Retorna un vector con las posiciones en tabla de la interseccion de resul
+     * tados.
+     * @return 
+     * Retorna un vector con las posiciones en tabla de la interseccion de resul
+     * tados.
+     */
     private ArrayList<Integer> JointSearch4Param(ArrayList<Integer> finalResult,ArrayList<Integer> averageResult){
         
         ArrayList<Integer> result = new ArrayList<Integer>();
@@ -139,6 +218,11 @@ public class ControllerMainView implements ActionListener{
                                 
         return result;
     }
+    
+    /**
+     *Valida los datos introducidos y maneja que tipo de busquedas que se haran 
+     * con dichos datos.
+     */
     public void search(){
         String average1=view.getFsearchAverage1().getText();
         String average2=view.getFsearchAverage2().getText();
@@ -151,7 +235,7 @@ public class ControllerMainView implements ActionListener{
         if(name.compareTo("")!=0){                        
             finalResult = searchName(professionTree, name);
             if(finalResult.size()==0){
-                    JOptionPane.showMessageDialog(null, "NO ESXTTEN COINCIDENCIAS DE REGISTRO, INTENTELOS NUEVAMENTE");
+                    JOptionPane.showMessageDialog(null, "NO EXISTEN COINCIDENCIAS DE REGISTRO, INTENTELOS NUEVAMENTE");
             }           
         }
         if(profession.compareTo("")!=0){
@@ -196,7 +280,7 @@ public class ControllerMainView implements ActionListener{
                 }                
             }
         }
-        
+
         setRows(dataMatrix, finalResult);
         view.setFsearchName("");
         view.setFsearchProfession("");
@@ -207,6 +291,19 @@ public class ControllerMainView implements ActionListener{
         averageResult.clear();
     }
   
+    /**
+     *
+     * @param dataMatrix
+     * Recibe una matriz con todos los datos del documento.
+     * @param nameIndex
+     * Recibe un vector con la posicion de los datos ordenados por nombre.
+     * @param averageIndex
+     * Recibe un vector con la posicion de los datos ordenados por promedio.
+     * @param averageTree
+     * Recibe un objeto NumericTree con los datos ordenados por promedio
+     * @param professionTree
+     * Recibe un objeto AlfanumericTree con los datos ordenados por profesion.
+     */
     public void setData(String[][] dataMatrix, ArrayList<Integer> nameIndex, ArrayList<Integer> averageIndex, NumericTree averageTree, AlfanumericTree professionTree){
         this.dataMatrix = dataMatrix;
         this.nameIndex = nameIndex;

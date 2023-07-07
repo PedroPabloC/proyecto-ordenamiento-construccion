@@ -16,6 +16,14 @@ public class Graduates {
     final int ARCHIVE_ROWS=626;
     static String[][] dataArray;
     
+    /**
+     *Analiza y desglosa los datos del archivo seleccionado.
+     * @param nameA
+     * Recibe un string con la direccion del archivo a analizar.
+     * @return
+     * Retorna un arreglo con los datos del archivo divididios en tres columnas:
+     * Nombre, Profesion, Promedio.
+     */
     public String[][] reader(String nameA){
         dataArray = new String[627][3];
         
@@ -44,10 +52,23 @@ public class Graduates {
         }
     }
     
+    /**
+     *Proporciona una matriz con todos los datos del documento analizado.
+     * @return
+     * Retorna una matriz con todos los datos del documento analizado.
+     */
     public String[][] getMatrix(){
         return dataArray;
     }
     
+    /**
+     *Escribe la posicion de linea de todos los datos en el arreglo recibido.
+     * @param array
+     * Recibe un arreglo con todos los datos del archivo analizado.
+     * @return
+     * Retorna un vector con la posicion en el arreglo de todos los datos del 
+     * archivo analizado.
+     */
     public int[] getIndex(String[][] array){
         int[] indexArray = new int[ARCHIVE_ROWS];
         String[][] dataArray=array;
@@ -58,6 +79,13 @@ public class Graduates {
         return indexArray;
     }
     
+    /**
+     *Escribe el nombre en cada linea del arreglo recibido.
+     * @param array
+     * Recibe un arreglo con todos los datos del documento analizado.
+     * @return
+     * Regresa un vector con todos los nombres en los datos analizados.
+     */
     public String[] getName(String[][] array){
         String[] nameData = new String[ARCHIVE_ROWS];
         String[][] dataArray=array;
@@ -68,6 +96,13 @@ public class Graduates {
         return nameData;
     }
     
+    /**
+     *Escribe la profesion en cada linea del arreglo recibido.
+     * @param array
+     * Recibe un arreglo con todos los datos del documento analizado.
+     * @return
+     * Regresa un vector con todos las profesiones en los datos analizados.
+     */
     public String[] getProfession(String[][] array){
         String[] professionData = new String[ARCHIVE_ROWS];
         String[][] dataArray=array;
@@ -78,6 +113,13 @@ public class Graduates {
         return professionData;
     }
     
+    /**
+     *Escribe el promedio en cada linea del arreglo recibido.
+     * @param array
+     * Recibe un arreglo con todos los datos del documento analizado.
+     * @return
+     * Regresa un vector con todos los promedios en los datos analizados.
+     */
     public int[] getAverage(String[][] array){
         int[] averageData = new int[ARCHIVE_ROWS];
         String[][] dataArray=array;
