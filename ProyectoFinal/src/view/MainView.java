@@ -3,10 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package vista;
+package view;
 
 import java.util.ArrayList;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
@@ -17,19 +18,19 @@ import model.*;
  *
  * @author Albert
  */
-public class mainView extends javax.swing.JFrame {
+public class MainView extends javax.swing.JFrame {
    
-    public mainView() {
+    public MainView() {
         initComponents();
-        filNomb.setText("Filtrar por Nombre");
-        searchByProm.setText("Buscar por Promedio");
-        searchNom.setText(null);
-        searchProf.setText(null);
-        searchProm.setText(null);
+        BfilterByName.setText("Filtrar por Nombre");
+        FsearchName.setText(null);
+        FsearchProfession.setText(null);
+        FsearchAverage1.setText(null);
         label1.setText("Nombre:");
         label2.setText("Profesión:");
         label3.setText("Promedio:");
     }
+
     
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -38,15 +39,16 @@ public class mainView extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         lista = new javax.swing.JTable();
-        filNomb = new javax.swing.JButton();
-        searchProm = new javax.swing.JTextField();
-        searchByProm = new javax.swing.JButton();
-        searchProf = new javax.swing.JTextField();
-        searchNom = new javax.swing.JTextField();
+        BfilterByName = new javax.swing.JButton();
+        FsearchProfession = new javax.swing.JTextField();
+        FsearchName = new javax.swing.JTextField();
         label1 = new javax.swing.JLabel();
         label2 = new javax.swing.JLabel();
         label3 = new javax.swing.JLabel();
-        Search = new javax.swing.JButton();
+        Bsearch = new javax.swing.JButton();
+        FsearchAverage1 = new javax.swing.JTextField();
+        CBrangos = new javax.swing.JComboBox<>();
+        FsearchAverage2 = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -65,15 +67,11 @@ public class mainView extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(lista);
 
-        filNomb.setText("jButton1");
+        BfilterByName.setText("jButton1");
 
-        searchProm.setText("jTextField1");
+        FsearchProfession.setText("jTextField1");
 
-        searchByProm.setText("jButton1");
-
-        searchProf.setText("jTextField1");
-
-        searchNom.setText("jTextField2");
+        FsearchName.setText("jTextField2");
 
         label1.setText("jLabel1");
 
@@ -81,29 +79,38 @@ public class mainView extends javax.swing.JFrame {
 
         label3.setText("jLabel3");
 
-        Search.setText("Search");
+        Bsearch.setText("Search");
+
+        CBrangos.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { ">= X", "<= X", "= X", "<= X <=" }));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(88, 88, 88)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(filNomb)
-                    .addComponent(Search))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(88, 88, 88)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(BfilterByName)
+                            .addComponent(Bsearch))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(label2)
+                            .addComponent(label1)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(label3)))
+                .addGap(12, 12, 12)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(label3)
-                    .addComponent(label2)
-                    .addComponent(label1))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(searchNom, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(searchProf, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(searchProm, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(62, 62, 62)
-                .addComponent(searchByProm)
+                    .addComponent(FsearchName, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(FsearchProfession, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(FsearchAverage1, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(CBrangos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(FsearchAverage2, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(37, 37, 37)
@@ -118,26 +125,29 @@ public class mainView extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(filNomb)
+                        .addComponent(BfilterByName)
                         .addGap(18, 18, 18)
-                        .addComponent(Search)
+                        .addComponent(Bsearch)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 13, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(searchNom, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(FsearchName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(label1))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(searchProf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(FsearchProfession, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(label2))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(searchProm, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(label3))
-                            .addComponent(searchByProm))
-                        .addGap(35, 35, 35))))
+                            .addComponent(label3)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(1, 1, 1)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(CBrangos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(FsearchAverage2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(FsearchAverage1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -171,84 +181,90 @@ public class mainView extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(mainView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MainView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(mainView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MainView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(mainView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MainView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(mainView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MainView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new mainView().setVisible(true);
+                new MainView().setVisible(true);
             }
         });
     }
    
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton Search;
-    private javax.swing.JButton filNomb;
+    private javax.swing.JButton BfilterByName;
+    private javax.swing.JButton Bsearch;
+    private javax.swing.JComboBox<String> CBrangos;
+    private javax.swing.JTextField FsearchAverage1;
+    private javax.swing.JTextField FsearchAverage2;
+    private javax.swing.JTextField FsearchName;
+    private javax.swing.JTextField FsearchProfession;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel label1;
     private javax.swing.JLabel label2;
     private javax.swing.JLabel label3;
     private javax.swing.JTable lista;
-    private javax.swing.JButton searchByProm;
-    private javax.swing.JTextField searchNom;
-    private javax.swing.JTextField searchProf;
-    private javax.swing.JTextField searchProm;
     // End of variables declaration//GEN-END:variables
-    public JButton getFilNomb() {
-        return filNomb;
+
+    public JButton getBfilterByName() {
+        return BfilterByName;
     }
 
-    public JButton getSearchByProm() {
-        return searchByProm;
+    public JTextField getFsearchName() {
+        return FsearchName;
     }
 
-    public JTextField getSearchNom() {
-        return searchNom;
+    public JTextField getFsearchProfession() {
+        return FsearchProfession;
     }
 
-    public JTextField getSearchProf() {
-        return searchProf;
+    public JTextField getFsearchAverage1() {
+        return FsearchAverage1;
     }
 
-    public JTextField getSearchProm() {
-        return searchProm;
-    }
-
-    public void setLista(JTable lista) {
+    public void setList(JTable lista) {
         this.lista = lista;
     }
 
-    public JTable getLista() {
+    public JTable getList() {
         return lista;
     }
 
-    public void setSearchProm(String searchProm) {
-        this.searchProm.setText(searchProm);
+    public void setFsearchAverage1(String searchProm) {
+        this.FsearchAverage1.setText(searchProm);
     }
 
-    public void setSearchNom(String searchNom) {
-        this.searchNom.setText(searchNom);
+    public void setFsearchName(String searchNom) {
+        this.FsearchName.setText(searchNom);
     }
 
-    public void setSearchProf(String searchProf) {
-        this.searchProf.setText(searchProf);
+    public void setFsearchProfession(String searchProf) {
+        this.FsearchProfession.setText(searchProf);
     }
 
-    public void setSearchByProm(boolean searchByProm) {
-        this.searchByProm.setVisible(searchByProm);
+    public JButton getBsearch() {
+        return Bsearch;
     }
 
-    public JButton getSearch() {
-        return Search;
+    public int getCBrangos() {
+        return CBrangos.getSelectedIndex();
     }
 
+    public JTextField getFsearchAverage2() {
+        return FsearchAverage2;
+    }
+
+    public void setFsearchAverage2(String searchProm2) {
+        this.FsearchAverage2.setText(searchProm2);
+    }   
 }
